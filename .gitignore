@@ -13,3 +13,6 @@ frontend/node_modules
 # Uploads (keep directory structure)
 api/uploads/*
 !api/uploads/.gitkeep
+
+# Real DB credentials live only on the server, never in git
+api/env.php

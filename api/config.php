@@ -1,6 +1,9 @@
 <?php
 // Shared-hosting friendly config: no Composer, no external deps.
-// On the real host, fill in the values your cPanel "MySQL Databases" panel gives you.
+// Real credentials live in api/env.php on the server only (gitignored —
+// see api/env.example.php). Never hardcode real credentials in this file:
+// it's committed to git.
+if (file_exists(__DIR__ . '/env.php')) require __DIR__ . '/env.php';
 
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
 $DB_NAME = getenv('DB_NAME') ?: 'adilabs_hero';

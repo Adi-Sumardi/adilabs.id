@@ -2,6 +2,8 @@
 // One-off CLI seeder: php api/seed.php
 // Creates the schema (if missing) and a default admin user.
 
+if (file_exists(__DIR__ . '/env.php')) require __DIR__ . '/env.php';
+
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
 $DB_NAME = getenv('DB_NAME') ?: 'adilabs_hero';
 $DB_USER = getenv('DB_USER') ?: 'root';

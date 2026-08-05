@@ -3,6 +3,8 @@
 // Populates hero_settings + content_lists with the site's original defaults,
 // so the dashboard-editable content starts out matching what's already live.
 
+if (file_exists(__DIR__ . '/env.php')) require __DIR__ . '/env.php';
+
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
 $DB_NAME = getenv('DB_NAME') ?: 'adilabs_hero';
 $DB_USER = getenv('DB_USER') ?: 'root';

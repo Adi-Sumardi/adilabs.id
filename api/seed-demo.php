@@ -4,6 +4,8 @@
 // page isn't empty during development or a demo. Safe to re-run — it skips
 // seeding whichever table already has rows.
 
+if (file_exists(__DIR__ . '/env.php')) require __DIR__ . '/env.php';
+
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
 $DB_NAME = getenv('DB_NAME') ?: 'adilabs_hero';
 $DB_USER = getenv('DB_USER') ?: 'root';
