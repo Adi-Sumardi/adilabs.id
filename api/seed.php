@@ -13,7 +13,7 @@ $pdo = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME};charset=utf8mb4", $DB_US
 
 $pdo->exec(file_get_contents(__DIR__ . '/schema.sql'));
 
-$email = 'admin@adilabs.com';
+$email = 'adisumardi888@gmail.com';
 $stmt = $pdo->prepare('SELECT id FROM users WHERE email = ?');
 $stmt->execute([$email]);
 
