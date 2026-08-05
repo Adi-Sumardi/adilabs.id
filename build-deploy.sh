@@ -20,14 +20,17 @@ npm run build
 cd ..
 
 echo "== Staging build output =="
-git add frontend/dist
+# frontend/dist plus the root-level symlinks (index.html, app-assets,
+# favicon.png, logo-panjang.png) that make it resolve at the domain root
+# when this repo is deployed by cloning straight into public_html.
+git add frontend/dist index.html app-assets favicon.png logo-panjang.png .htaccess
 
 if git diff --cached --quiet; then
   echo "No changes to commit (dist/ already matches source)."
   exit 0
 fi
 
-git status --short frontend/dist
+git status --short frontend/dist index.html app-assets favicon.png logo-panjang.png .htaccess
 
 read -rp "Commit message: " msg
 git commit -m "${msg:-build: update frontend dist}"

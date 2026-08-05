@@ -1,0 +1,46 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Block git internals, PHP/deploy source, and shell scripts FIRST — before
+  # the "file exists" passthrough below, since these do exist on disk and
+  # would otherwise be served as plain static files.
+  RewriteRule ^\.git - [F,L]
+  RewriteRule ^frontend/(src|node_modules)/ - [F,L]
+  RewriteRule ^(build-deploy|update)\.sh$ - [F,L]
+
+  # Never rewrite static asset file extensions
+  RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|json|woff2?|ttf|eot)$ [NC]
+  RewriteRule ^ - [L]
+
+  # Never rewrite /api/ requests — handled by api/*.php directly
+  RewriteRule ^api/ - [L]
+
+  # Skip rewrite if the requested file or directory actually exists
+  # (covers the app-assets/, frontend/, adilabs-hero.html, etc. symlinks/files)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else is a React Router client-side route — serve the SPA shell
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Correct MIME types
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
