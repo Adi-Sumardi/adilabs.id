@@ -2,18 +2,29 @@
   RewriteEngine On
   RewriteBase /
 
-  # Allow direct access to /api endpoint scripts and uploads
+  # 1. Allow direct access to /api/ and /assets/
   RewriteRule ^api/ - [L]
+  RewriteRule ^assets/ - [L]
 
-  # Direct static files and existing directories
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # 2. Skip rewrite if requested file or directory exists
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
-  # Route all React SPA client routes (/admin, /login, etc.) to index.html
+  # 3. Route all React SPA client routes to index.html
   RewriteRule ^ index.html [L]
 </IfModule>
 
-# Enable Gzip Compression for Fast Page Speed
+# Explicit MIME types for JS, CSS, and SVGs
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+</IfModule>
+
+# Enable Gzip Compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
