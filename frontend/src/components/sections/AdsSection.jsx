@@ -91,7 +91,6 @@ export default function AdsSection() {
       <div className="ads-header">
         <span className="ads-badge">IKLAN & LAYANAN</span>
         <h2>Butuh Aplikasi Notifikasi & Layanan Digital?</h2>
-        <p>Jelajahi berbagai solusi terintegrasi dan layanan khusus yang siap mendukung kebutuhan Anda.</p>
       </div>
 
       {loading && ads.length === 0 ? (

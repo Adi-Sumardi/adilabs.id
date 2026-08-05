@@ -8,9 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
 dist-ssr
 *.local
+
+# frontend/dist IS committed on purpose — this project deploys to shared
+# hosting via `git pull` (no Node/CI on the server), so the built bundle
+# has to travel through git. See build-deploy.sh / update.sh.
 
 # Editor directories and files
 .vscode/*
