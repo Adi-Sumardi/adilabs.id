@@ -1,0 +1,23 @@
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
+
+:root, html, body {
+  color-scheme: dark;
+  background-color: #05060f !important;
+  background: #05060f !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+#root { 
+  min-height: 100svh; 
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  background-color: #05060f !important;
+  background: #05060f !important;
+}

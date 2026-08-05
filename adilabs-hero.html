@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdilLabs — Hero Section</title>
+  <link rel="icon" type="image/png" href="assets/logo/adilabs.png" />
+  <link rel="stylesheet" href="assets/css/adilabs-hero.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="assets/logo/logo-panjang.png" alt="AdilLabs" class="nav-logo-img" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Produk</a></li>
+    <li><a href="#">Solusi</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Kontak</a></li>
+  </ul>
+</nav>
+
+<canvas id="starfield"></canvas>
+<canvas id="smokeCanvas" style="position:fixed;inset:0;z-index:2;pointer-events:none;"></canvas>
+
+<section id="hero">
+  <div id="vehicle-wrapper" class="hovering">
+    <!-- vehicle injected by JS -->
+  </div>
+
+  <!-- VEHICLE PICKER -->
+  <div id="vehicle-picker">
+    <div class="vp-label">Pilih Kendaraan</div>
+    <div class="vp-options">
+      <button class="vp-btn active" data-v="rocket"><span class="vp-icon">🚀</span> Roket</button>
+      <button class="vp-btn" data-v="jet"><span class="vp-icon">✈️</span> Jet</button>
+      <button class="vp-btn" data-v="ufo"><span class="vp-icon">🛸</span> UFO</button>
+    </div>
+  </div>
+
+  <div class="hero-text">
+    <h1>We Build<br/><span id="rotating-text">Digital Products</span></h1>
+    <div class="marquee">
+      <div class="marquee-track" id="marquee-track"></div>
+    </div>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Mulai Sekarang</a>
+      <a href="#" class="btn btn-outline">Lihat Produk Kami</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="mouse"><div class="wheel"></div></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<section id="below">
+  <h2>Apa yang Kami Bangun?</h2>
+  <p>AdilLabs menghadirkan produk dan layanan digital inovatif untuk startup hingga enterprise.</p>
+  <div class="cards">
+    <div class="card"><div class="card-icon">🚀</div><h3>Platform SaaS</h3><p>Solusi cloud-native yang siap pakai dan mudah di-scale sesuai kebutuhan bisnis Anda.</p></div>
+    <div class="card"><div class="card-icon">🤖</div><h3>AI & Otomasi</h3><p>Integrasikan kecerdasan buatan ke dalam alur kerja Anda untuk efisiensi maksimal.</p></div>
+    <div class="card"><div class="card-icon">🔒</div><h3>Keamanan Data</h3><p>Infrastruktur berlapis dengan enkripsi end-to-end dan audit trail lengkap.</p></div>
+  </div>
+</section>
+
+<script src="assets/js/adilabs-hero.js"></script>
+</body>
+</html>

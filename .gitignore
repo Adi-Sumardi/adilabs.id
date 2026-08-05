@@ -1,0 +1,18 @@
+# Dependencies
+node_modules
+frontend/node_modules
+
+# Build output
+frontend/dist
+
+# Environment & IDE
+.env
+.env.local
+.DS_Store
+.vscode
+.idea
+*.log
+
+# Uploads (keep directory structure)
+api/uploads/*
+!api/uploads/.gitkeep
