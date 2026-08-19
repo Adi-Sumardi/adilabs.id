@@ -3,6 +3,19 @@ import { portfolioApi } from '../api/client';
 
 const EMPTY_FORM = { title: '', description: '', product_url: '', tech_stack: '' };
 
+function isPdfUrl(url) {
+  return url.toLowerCase().endsWith('.pdf');
+}
+
+function PdfIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 2v6h6" />
+    </svg>
+  );
+}
+
 export default function PortfolioPanel() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -77,7 +90,11 @@ export default function PortfolioPanel() {
   function handleDiagramFileChange(e) {
     const files = Array.from(e.target.files || []);
     setDiagramFiles(files);
-    setDiagramPreviewUrls(files.map((f) => URL.createObjectURL(f)));
+    setDiagramPreviewUrls(files.map((f) => ({
+      url: URL.createObjectURL(f),
+      isPdf: f.type === 'application/pdf',
+      name: f.name,
+    })));
   }
 
   async function handleDelete(id) {
@@ -221,22 +238,28 @@ export default function PortfolioPanel() {
 
           <div className="field">
             <label htmlFor="p-diagram">
-              Design / Architecture Diagram (opsional, bisa lebih dari satu)
+              Design / Architecture Diagram (opsional, bisa lebih dari satu — gambar atau PDF)
               {selectedId ? ' — kosongkan jika tidak diganti' : ''}
             </label>
             <input
               id="p-diagram" type="file" multiple
-              accept="image/png,image/jpeg,image/webp,image/gif"
+              accept="image/png,image/jpeg,image/webp,image/gif,application/pdf"
               ref={diagramInputRef} onChange={handleDiagramFileChange}
             />
-            <p className="field-hint">Diagram alur/arsitektur biar orang yang baca paham cara kerja aplikasinya.</p>
+            <p className="field-hint">Diagram alur/arsitektur (gambar atau PDF) biar orang yang baca paham cara kerja aplikasinya.</p>
           </div>
 
           {diagramPreviewUrls.length > 0 && (
             <div className="field">
               <div className="image-preview-row">
-                {diagramPreviewUrls.map((url, i) => (
-                  <img src={url} alt={`Preview diagram ${i + 1}`} className="portfolio-preview" key={i} />
+                {diagramPreviewUrls.map((d, i) => (
+                  d.isPdf ? (
+                    <a href={d.url} target="_blank" rel="noreferrer" className="file-chip-preview" key={i}>
+                      <PdfIcon /> {d.name}
+                    </a>
+                  ) : (
+                    <img src={d.url} alt={`Preview diagram ${i + 1}`} className="portfolio-preview" key={i} />
+                  )
                 ))}
               </div>
             </div>
@@ -246,7 +269,13 @@ export default function PortfolioPanel() {
               <label>Diagram saat ini</label>
               <div className="image-preview-row">
                 {existingDiagrams.map((url, i) => (
-                  <img src={url} alt={`Diagram ${i + 1}`} className="portfolio-preview" key={i} />
+                  isPdfUrl(url) ? (
+                    <a href={url} target="_blank" rel="noreferrer" className="file-chip-preview" key={i}>
+                      <PdfIcon /> Diagram {i + 1}.pdf
+                    </a>
+                  ) : (
+                    <img src={url} alt={`Diagram ${i + 1}`} className="portfolio-preview" key={i} />
+                  )
                 ))}
               </div>
             </div>

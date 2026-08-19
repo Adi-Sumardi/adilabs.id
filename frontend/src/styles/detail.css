@@ -38,3 +38,12 @@
 .detail-diagrams { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
 .detail-diagrams h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; }
 .detail-diagrams .carousel-img { height: 320px; border-radius: 16px; object-fit: contain; background: rgba(255,255,255,0.03); }
+
+.detail-diagram-pdfs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.detail-pdf-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 16px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03);
+  color: #f0f0ff; font-size: 0.88rem; text-decoration: none;
+}
+.detail-pdf-link:hover { border-color: #29d4f0; color: #29d4f0; }

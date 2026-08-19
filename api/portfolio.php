@@ -1,46 +1,63 @@
 <?php
 require __DIR__ . '/config.php';
 
-const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // 5MB per image
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // 5MB per file
 const MAX_IMAGES = 8;
 const MAX_DIAGRAMS = 5;
-const ALLOWED_MIME = [
+const ALLOWED_IMAGE_MIME = [
     'image/jpeg' => 'jpg',
     'image/png'  => 'png',
     'image/webp' => 'webp',
     'image/gif'  => 'gif',
 ];
+// Diagrams accept everything a screenshot does, plus PDF exports of
+// architecture/design-plan documents.
+const ALLOWED_DIAGRAM_MIME = [
+    'image/jpeg'      => 'jpg',
+    'image/png'       => 'png',
+    'image/webp'      => 'webp',
+    'image/gif'       => 'gif',
+    'application/pdf' => 'pdf',
+];
 const UPLOAD_DIR = __DIR__ . '/uploads/portfolio';
 const UPLOAD_URL_BASE = '/api/uploads/portfolio';
 
-function save_uploaded_image(array $file): string {
+function save_uploaded_file(array $file, array $allowedMime, string $formatErrorMsg): string {
     if ($file['error'] !== UPLOAD_ERR_OK) {
         http_response_code(422);
-        echo json_encode(['error' => 'Upload gambar gagal']);
+        echo json_encode(['error' => 'Upload file gagal']);
         exit;
     }
     if ($file['size'] > MAX_UPLOAD_BYTES) {
         http_response_code(422);
-        echo json_encode(['error' => 'Ukuran setiap gambar maksimal 5MB']);
+        echo json_encode(['error' => 'Ukuran setiap file maksimal 5MB']);
         exit;
     }
     $mime = mime_content_type($file['tmp_name']);
-    if (!isset(ALLOWED_MIME[$mime])) {
+    if (!isset($allowedMime[$mime])) {
         http_response_code(422);
-        echo json_encode(['error' => 'Format gambar harus JPG, PNG, WEBP, atau GIF']);
+        echo json_encode(['error' => $formatErrorMsg]);
         exit;
     }
-    $ext = ALLOWED_MIME[$mime];
+    $ext = $allowedMime[$mime];
     $filename = bin2hex(random_bytes(16)) . '.' . $ext;
     if (!is_dir(UPLOAD_DIR)) {
         mkdir(UPLOAD_DIR, 0755, true);
     }
     if (!move_uploaded_file($file['tmp_name'], UPLOAD_DIR . '/' . $filename)) {
         http_response_code(500);
-        echo json_encode(['error' => 'Gagal menyimpan gambar']);
+        echo json_encode(['error' => 'Gagal menyimpan file']);
         exit;
     }
     return UPLOAD_URL_BASE . '/' . $filename;
+}
+
+function save_uploaded_image(array $file): string {
+    return save_uploaded_file($file, ALLOWED_IMAGE_MIME, 'Format gambar harus JPG, PNG, WEBP, atau GIF');
+}
+
+function save_uploaded_diagram(array $file): string {
+    return save_uploaded_file($file, ALLOWED_DIAGRAM_MIME, 'Format diagram harus JPG, PNG, WEBP, GIF, atau PDF');
 }
 
 // Normalizes PHP's awkward $_FILES['images'] structure (parallel arrays)
@@ -161,7 +178,7 @@ if ($method === 'POST') {
             $imagePath = $uploaded[0];
         }
         if ($diagramFiles) {
-            $uploadedDiagrams = array_map('save_uploaded_image', $diagramFiles);
+            $uploadedDiagrams = array_map('save_uploaded_diagram', $diagramFiles);
             replace_gallery($pdo, $postedId, $uploadedDiagrams, 'diagram');
         }
 
@@ -184,7 +201,7 @@ if ($method === 'POST') {
     $newId = (int)$pdo->lastInsertId();
     replace_gallery($pdo, $newId, $uploaded, 'screenshot');
     if ($diagramFiles) {
-        $uploadedDiagrams = array_map('save_uploaded_image', $diagramFiles);
+        $uploadedDiagrams = array_map('save_uploaded_diagram', $diagramFiles);
         replace_gallery($pdo, $newId, $uploadedDiagrams, 'diagram');
     }
 

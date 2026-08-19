@@ -115,6 +115,15 @@
   background: rgba(41,212,240,0.12); color: #6fe3f5; border: 1px solid rgba(41,212,240,0.25);
 }
 .field-hint { font-size: 0.75rem; color: rgba(240,240,255,0.4); margin-top: 6px; }
+.file-chip-preview {
+  display: flex; align-items: center; gap: 7px;
+  max-width: 220px; padding: 10px 12px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04);
+  color: #f0f0ff; font-size: 0.8rem; text-decoration: none;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.file-chip-preview:hover { border-color: rgba(0,150,199,0.5); background: rgba(0,150,199,0.08); }
+.file-chip-preview svg { flex-shrink: 0; color: #29d4f0; }
 
 /* REORDERABLE TEXT LISTS (marquee / rotating words) */
 .inline-add-form { display: flex; gap: 8px; margin-bottom: 16px; }

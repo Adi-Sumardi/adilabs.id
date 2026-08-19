@@ -6,6 +6,10 @@ import '../styles/hero.css';
 import '../styles/sections.css';
 import '../styles/detail.css';
 
+function isPdfUrl(url) {
+  return url.toLowerCase().endsWith('.pdf');
+}
+
 export default function ProductDetail() {
   const { id } = useParams();
   const [item, setItem] = useState(null);
@@ -58,12 +62,31 @@ export default function ProductDetail() {
               </a>
             )}
 
-            {item.diagrams?.length > 0 && (
-              <section className="detail-diagrams">
-                <h2>Desain &amp; Arsitektur</h2>
-                <ImageCarousel images={item.diagrams} alt={`Diagram ${item.title}`} />
-              </section>
-            )}
+            {item.diagrams?.length > 0 && (() => {
+              const diagramImages = item.diagrams.filter((d) => !isPdfUrl(d));
+              const diagramPdfs = item.diagrams.filter(isPdfUrl);
+              return (
+                <section className="detail-diagrams">
+                  <h2>Desain &amp; Arsitektur</h2>
+                  {diagramImages.length > 0 && (
+                    <ImageCarousel images={diagramImages} alt={`Diagram ${item.title}`} />
+                  )}
+                  {diagramPdfs.length > 0 && (
+                    <div className="detail-diagram-pdfs">
+                      {diagramPdfs.map((url, i) => (
+                        <a href={url} target="_blank" rel="noreferrer" className="detail-pdf-link" key={i}>
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+                            <path d="M14 2v6h6" />
+                          </svg>
+                          Buka PDF Diagram {diagramPdfs.length > 1 ? i + 1 : ''}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </section>
+              );
+            })()}
           </article>
         )}
       </div>
