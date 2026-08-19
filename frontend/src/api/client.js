@@ -65,12 +65,14 @@ export const articlesApi = {
   remove: (id) => request(`/articles.php?id=${id}`, { method: 'DELETE' }),
 };
 
-function portfolioFormData({ title, description, product_url, imageFiles }) {
+function portfolioFormData({ title, description, product_url, tech_stack, imageFiles, diagramFiles }) {
   const fd = new FormData();
   fd.append('title', title);
   fd.append('description', description ?? '');
   fd.append('product_url', product_url ?? '');
+  fd.append('tech_stack', tech_stack ?? '');
   (imageFiles ?? []).forEach((file) => fd.append('images[]', file));
+  (diagramFiles ?? []).forEach((file) => fd.append('diagrams[]', file));
   return fd;
 }
 

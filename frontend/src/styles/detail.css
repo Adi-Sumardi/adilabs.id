@@ -28,3 +28,13 @@
   margin-top: 24px; font-size: 1rem; line-height: 1.8; color: rgba(240,240,255,0.75);
 }
 .detail-content p { margin-bottom: 16px; }
+
+.detail-tech-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.detail-tech-chip {
+  font-size: 0.78rem; font-weight: 600; padding: 5px 13px; border-radius: 20px;
+  background: rgba(41,212,240,0.12); color: #6fe3f5; border: 1px solid rgba(41,212,240,0.25);
+}
+
+.detail-diagrams { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+.detail-diagrams h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; }
+.detail-diagrams .carousel-img { height: 320px; border-radius: 16px; object-fit: contain; background: rgba(255,255,255,0.03); }

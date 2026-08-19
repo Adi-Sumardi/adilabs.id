@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { portfolioApi } from '../api/client';
 
-const EMPTY_FORM = { title: '', description: '', product_url: '' };
+const EMPTY_FORM = { title: '', description: '', product_url: '', tech_stack: '' };
 
 export default function PortfolioPanel() {
   const [items, setItems] = useState([]);
@@ -13,9 +13,13 @@ export default function PortfolioPanel() {
   const [imageFiles, setImageFiles] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
   const [existingImages, setExistingImages] = useState([]);
+  const [diagramFiles, setDiagramFiles] = useState([]);
+  const [diagramPreviewUrls, setDiagramPreviewUrls] = useState([]);
+  const [existingDiagrams, setExistingDiagrams] = useState([]);
   const [formError, setFormError] = useState('');
   const [saving, setSaving] = useState(false);
   const fileInputRef = useRef(null);
+  const diagramInputRef = useRef(null);
 
   async function loadItems() {
     setLoading(true);
@@ -37,8 +41,12 @@ export default function PortfolioPanel() {
     setImageFiles([]);
     setPreviewUrls([]);
     setExistingImages([]);
+    setDiagramFiles([]);
+    setDiagramPreviewUrls([]);
+    setExistingDiagrams([]);
     setFormError('');
     if (fileInputRef.current) fileInputRef.current.value = '';
+    if (diagramInputRef.current) diagramInputRef.current.value = '';
   }
 
   function startEdit(item) {
@@ -47,18 +55,29 @@ export default function PortfolioPanel() {
       title: item.title,
       description: item.description || '',
       product_url: item.product_url || '',
+      tech_stack: item.tech_stack || '',
     });
     setImageFiles([]);
     setPreviewUrls([]);
     setExistingImages(item.images || [item.image_path]);
+    setDiagramFiles([]);
+    setDiagramPreviewUrls([]);
+    setExistingDiagrams(item.diagrams || []);
     setFormError('');
     if (fileInputRef.current) fileInputRef.current.value = '';
+    if (diagramInputRef.current) diagramInputRef.current.value = '';
   }
 
   function handleFileChange(e) {
     const files = Array.from(e.target.files || []);
     setImageFiles(files);
     setPreviewUrls(files.map((f) => URL.createObjectURL(f)));
+  }
+
+  function handleDiagramFileChange(e) {
+    const files = Array.from(e.target.files || []);
+    setDiagramFiles(files);
+    setDiagramPreviewUrls(files.map((f) => URL.createObjectURL(f)));
   }
 
   async function handleDelete(id) {
@@ -82,9 +101,9 @@ export default function PortfolioPanel() {
     setSaving(true);
     try {
       if (selectedId) {
-        await portfolioApi.update(selectedId, { ...form, imageFiles });
+        await portfolioApi.update(selectedId, { ...form, imageFiles, diagramFiles });
       } else {
-        const created = await portfolioApi.create({ ...form, imageFiles });
+        const created = await portfolioApi.create({ ...form, imageFiles, diagramFiles });
         setSelectedId(created.id);
       }
       await loadItems();
@@ -114,8 +133,18 @@ export default function PortfolioPanel() {
               <img src={item.image_path} alt={item.title} className="portfolio-thumb" />
               <div className="portfolio-card-body">
                 <div className="title">{item.title}</div>
-                {item.images?.length > 1 && <span className="badge draft">{item.images.length} foto</span>}
+                <div className="portfolio-card-badges">
+                  {item.images?.length > 1 && <span className="badge draft">{item.images.length} foto</span>}
+                  {item.diagrams?.length > 0 && <span className="badge published">{item.diagrams.length} diagram</span>}
+                </div>
                 {item.description && <div className="sub">{item.description}</div>}
+                {item.tech_stack && (
+                  <div className="tech-chip-row">
+                    {item.tech_stack.split(',').map((t) => t.trim()).filter(Boolean).map((t, i) => (
+                      <span className="tech-chip" key={i}>{t}</span>
+                    ))}
+                  </div>
+                )}
                 <div className="row-actions">
                   <button onClick={() => startEdit(item)}>Edit</button>
                   <button className="danger" onClick={() => handleDelete(item.id)}>Hapus</button>
@@ -153,6 +182,13 @@ export default function PortfolioPanel() {
             />
           </div>
           <div className="field">
+            <label htmlFor="p-tech">Tech Stack (pisahkan dengan koma)</label>
+            <input
+              id="p-tech" type="text" value={form.tech_stack} placeholder="cth. Laravel, React, MySQL, Redis"
+              onChange={(e) => setForm({ ...form, tech_stack: e.target.value })}
+            />
+          </div>
+          <div className="field">
             <label htmlFor="p-image">
               Screenshot (bisa pilih beberapa sekaligus){selectedId ? ' — kosongkan jika tidak diganti' : ''}
             </label>
@@ -178,6 +214,39 @@ export default function PortfolioPanel() {
               <div className="image-preview-row">
                 {existingImages.map((url, i) => (
                   <img src={url} alt={`Gambar ${i + 1}`} className="portfolio-preview" key={i} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="field">
+            <label htmlFor="p-diagram">
+              Design / Architecture Diagram (opsional, bisa lebih dari satu)
+              {selectedId ? ' — kosongkan jika tidak diganti' : ''}
+            </label>
+            <input
+              id="p-diagram" type="file" multiple
+              accept="image/png,image/jpeg,image/webp,image/gif"
+              ref={diagramInputRef} onChange={handleDiagramFileChange}
+            />
+            <p className="field-hint">Diagram alur/arsitektur biar orang yang baca paham cara kerja aplikasinya.</p>
+          </div>
+
+          {diagramPreviewUrls.length > 0 && (
+            <div className="field">
+              <div className="image-preview-row">
+                {diagramPreviewUrls.map((url, i) => (
+                  <img src={url} alt={`Preview diagram ${i + 1}`} className="portfolio-preview" key={i} />
+                ))}
+              </div>
+            </div>
+          )}
+          {diagramPreviewUrls.length === 0 && existingDiagrams.length > 0 && (
+            <div className="field">
+              <label>Diagram saat ini</label>
+              <div className="image-preview-row">
+                {existingDiagrams.map((url, i) => (
+                  <img src={url} alt={`Diagram ${i + 1}`} className="portfolio-preview" key={i} />
                 ))}
               </div>
             </div>

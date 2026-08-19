@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS portfolio_items (
   title VARCHAR(150) NOT NULL,
   description VARCHAR(500) DEFAULT '',
   product_url VARCHAR(255) DEFAULT '',
+  tech_stack VARCHAR(500) DEFAULT '',
   image_path VARCHAR(255) NOT NULL,
   author_id INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -18,10 +19,14 @@ CREATE TABLE IF NOT EXISTS portfolio_items (
   FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- kind distinguishes product screenshots (shown in the main carousel, one of
+-- which is mirrored as portfolio_items.image_path for the card thumbnail)
+-- from architecture/design-plan diagrams (shown in their own section).
 CREATE TABLE IF NOT EXISTS portfolio_images (
   id INT AUTO_INCREMENT PRIMARY KEY,
   portfolio_item_id INT NOT NULL,
   image_path VARCHAR(255) NOT NULL,
+  kind ENUM('screenshot','diagram') NOT NULL DEFAULT 'screenshot',
   sort_order INT NOT NULL DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (portfolio_item_id) REFERENCES portfolio_items(id) ON DELETE CASCADE

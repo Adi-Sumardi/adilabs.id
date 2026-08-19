@@ -3,6 +3,7 @@ require __DIR__ . '/config.php';
 
 const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // 5MB per image
 const MAX_IMAGES = 8;
+const MAX_DIAGRAMS = 5;
 const ALLOWED_MIME = [
     'image/jpeg' => 'jpg',
     'image/png'  => 'png',
@@ -69,23 +70,32 @@ function delete_image_file(?string $imagePath): void {
 }
 
 function fetch_images(PDO $pdo, int $itemId, string $coverPath): array {
-    $stmt = $pdo->prepare('SELECT image_path FROM portfolio_images WHERE portfolio_item_id = ? ORDER BY sort_order ASC, id ASC');
+    $stmt = $pdo->prepare("SELECT image_path FROM portfolio_images WHERE portfolio_item_id = ? AND kind = 'screenshot' ORDER BY sort_order ASC, id ASC");
     $stmt->execute([$itemId]);
     $gallery = $stmt->fetchAll(PDO::FETCH_COLUMN);
     return array_values(array_unique(array_merge([$coverPath], $gallery)));
 }
 
-function replace_gallery(PDO $pdo, int $itemId, array $imagePaths): void {
-    // imagePaths[0] is the cover (already stored on portfolio_items.image_path);
-    // the rest become the gallery.
-    $stmt = $pdo->prepare('SELECT image_path FROM portfolio_images WHERE portfolio_item_id = ?');
+function fetch_diagrams(PDO $pdo, int $itemId): array {
+    $stmt = $pdo->prepare("SELECT image_path FROM portfolio_images WHERE portfolio_item_id = ? AND kind = 'diagram' ORDER BY sort_order ASC, id ASC");
     $stmt->execute([$itemId]);
-    foreach ($stmt->fetchAll(PDO::FETCH_COLUMN) as $old) delete_image_file($old);
-    $pdo->prepare('DELETE FROM portfolio_images WHERE portfolio_item_id = ?')->execute([$itemId]);
+    return $stmt->fetchAll(PDO::FETCH_COLUMN);
+}
 
-    $stmt = $pdo->prepare('INSERT INTO portfolio_images (portfolio_item_id, image_path, sort_order) VALUES (?, ?, ?)');
-    foreach (array_slice($imagePaths, 1) as $i => $path) {
-        $stmt->execute([$itemId, $path, $i]);
+// $kind is 'screenshot' or 'diagram'. For 'screenshot', imagePaths[0] is the
+// cover (already stored separately on portfolio_items.image_path) so only
+// the rest become gallery rows; for 'diagram' there is no cover and every
+// path becomes a gallery row.
+function replace_gallery(PDO $pdo, int $itemId, array $imagePaths, string $kind): void {
+    $stmt = $pdo->prepare('SELECT image_path FROM portfolio_images WHERE portfolio_item_id = ? AND kind = ?');
+    $stmt->execute([$itemId, $kind]);
+    foreach ($stmt->fetchAll(PDO::FETCH_COLUMN) as $old) delete_image_file($old);
+    $pdo->prepare('DELETE FROM portfolio_images WHERE portfolio_item_id = ? AND kind = ?')->execute([$itemId, $kind]);
+
+    $rest = $kind === 'screenshot' ? array_slice($imagePaths, 1) : $imagePaths;
+    $stmt = $pdo->prepare('INSERT INTO portfolio_images (portfolio_item_id, image_path, kind, sort_order) VALUES (?, ?, ?, ?)');
+    foreach ($rest as $i => $path) {
+        $stmt->execute([$itemId, $path, $kind, $i]);
     }
 }
 
@@ -103,12 +113,14 @@ if ($method === 'GET') {
             exit;
         }
         $item['images'] = fetch_images($pdo, $item['id'], $item['image_path']);
+        $item['diagrams'] = fetch_diagrams($pdo, $item['id']);
         echo json_encode($item);
         exit;
     }
     $rows = $pdo->query('SELECT p.*, u.name AS author_name FROM portfolio_items p JOIN users u ON u.id = p.author_id ORDER BY p.created_at DESC')->fetchAll();
     foreach ($rows as &$row) {
         $row['images'] = fetch_images($pdo, $row['id'], $row['image_path']);
+        $row['diagrams'] = fetch_diagrams($pdo, $row['id']);
     }
     echo json_encode($rows);
     exit;
@@ -121,7 +133,9 @@ if ($method === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $description = trim($_POST['description'] ?? '');
     $productUrl = trim($_POST['product_url'] ?? '');
+    $techStack = trim($_POST['tech_stack'] ?? '');
     $files = array_slice(normalize_files('images'), 0, MAX_IMAGES);
+    $diagramFiles = array_slice(normalize_files('diagrams'), 0, MAX_DIAGRAMS);
 
     if ($title === '') {
         http_response_code(422);
@@ -143,12 +157,16 @@ if ($method === 'POST') {
         if ($files) {
             $uploaded = array_map('save_uploaded_image', $files);
             delete_image_file($existing['image_path']);
-            replace_gallery($pdo, $postedId, $uploaded);
+            replace_gallery($pdo, $postedId, $uploaded, 'screenshot');
             $imagePath = $uploaded[0];
         }
+        if ($diagramFiles) {
+            $uploadedDiagrams = array_map('save_uploaded_image', $diagramFiles);
+            replace_gallery($pdo, $postedId, $uploadedDiagrams, 'diagram');
+        }
 
-        $pdo->prepare('UPDATE portfolio_items SET title = ?, description = ?, product_url = ?, image_path = ? WHERE id = ?')
-            ->execute([$title, $description, $productUrl, $imagePath, $postedId]);
+        $pdo->prepare('UPDATE portfolio_items SET title = ?, description = ?, product_url = ?, tech_stack = ?, image_path = ? WHERE id = ?')
+            ->execute([$title, $description, $productUrl, $techStack, $imagePath, $postedId]);
 
         echo json_encode(['ok' => true, 'id' => $postedId]);
         exit;
@@ -161,10 +179,14 @@ if ($method === 'POST') {
     }
     $uploaded = array_map('save_uploaded_image', $files);
 
-    $stmt = $pdo->prepare('INSERT INTO portfolio_items (title, description, product_url, image_path, author_id) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute([$title, $description, $productUrl, $uploaded[0], $user['id']]);
+    $stmt = $pdo->prepare('INSERT INTO portfolio_items (title, description, product_url, tech_stack, image_path, author_id) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$title, $description, $productUrl, $techStack, $uploaded[0], $user['id']]);
     $newId = (int)$pdo->lastInsertId();
-    replace_gallery($pdo, $newId, $uploaded);
+    replace_gallery($pdo, $newId, $uploaded, 'screenshot');
+    if ($diagramFiles) {
+        $uploadedDiagrams = array_map('save_uploaded_image', $diagramFiles);
+        replace_gallery($pdo, $newId, $uploadedDiagrams, 'diagram');
+    }
 
     http_response_code(201);
     echo json_encode(['id' => $newId]);

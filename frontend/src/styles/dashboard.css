@@ -108,6 +108,13 @@
 .image-preview-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .image-preview-row .portfolio-preview { max-width: 120px; max-height: 90px; object-fit: cover; }
 .article-cover-preview { max-width: 100%; max-height: 200px; border-radius: 8px; display: block; margin-top: 8px; }
+.portfolio-card-badges { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0; }
+.tech-chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.tech-chip {
+  font-size: 0.68rem; font-weight: 600; padding: 3px 9px; border-radius: 20px;
+  background: rgba(41,212,240,0.12); color: #6fe3f5; border: 1px solid rgba(41,212,240,0.25);
+}
+.field-hint { font-size: 0.75rem; color: rgba(240,240,255,0.4); margin-top: 6px; }
 
 /* REORDERABLE TEXT LISTS (marquee / rotating words) */
 .inline-add-form { display: flex; gap: 8px; margin-bottom: 16px; }

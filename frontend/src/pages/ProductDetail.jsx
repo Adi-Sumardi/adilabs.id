@@ -44,11 +44,25 @@ export default function ProductDetail() {
           <article className="detail-article">
             <ImageCarousel images={item.images?.length ? item.images : [item.image_path]} alt={item.title} />
             <h1>{item.title}</h1>
+            {item.tech_stack && (
+              <div className="detail-tech-row">
+                {item.tech_stack.split(',').map((t) => t.trim()).filter(Boolean).map((t, i) => (
+                  <span className="detail-tech-chip" key={i}>{t}</span>
+                ))}
+              </div>
+            )}
             {item.description && <p className="detail-lead">{item.description}</p>}
             {item.product_url && (
               <a href={item.product_url} target="_blank" rel="noreferrer" className="btn btn-primary">
                 Kunjungi Produk →
               </a>
+            )}
+
+            {item.diagrams?.length > 0 && (
+              <section className="detail-diagrams">
+                <h2>Desain &amp; Arsitektur</h2>
+                <ImageCarousel images={item.diagrams} alt={`Diagram ${item.title}`} />
+              </section>
             )}
           </article>
         )}
