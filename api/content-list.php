@@ -19,7 +19,42 @@ $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 if ($method === 'GET') {
     $stmt = $pdo->prepare('SELECT * FROM content_lists WHERE list_type = ? ORDER BY sort_order ASC, id ASC');
     $stmt->execute([$type]);
-    echo json_encode($stmt->fetchAll());
+    $rows = $stmt->fetchAll();
+
+    // Auto-seed if empty so the dashboard & database start with initial items
+    if (count($rows) === 0) {
+        $defaultMap = [
+            'marquee_item' => [
+                'AI Custom',
+                'Scan PDF Rekening Koran AI',
+                'Dashboard Kolaborasi',
+                'Sistem Budget Manajemen + Approval + Report Budget',
+                'Sistem Aset Manajemen + Aset Depreciation + Aset QRCode',
+                'Sistem Activity Mahasiswa',
+                'Sistem Mail Engine untuk notifikasi email',
+                'Sistem WhatsApp Gateway untuk notifikasi WhatsApp + AI Automation',
+                'Sistem Notulensi Rapat + Followup + Undangan Digital',
+            ],
+            'rotating_word' => [
+                'Mobile Apps',
+                'Website',
+                'Landing Page',
+                'Mail Engine',
+                'WhatsApp Gateway',
+            ],
+        ];
+
+        if (!empty($defaultMap[$type])) {
+            $ins = $pdo->prepare('INSERT INTO content_lists (list_type, text, sort_order) VALUES (?, ?, ?)');
+            foreach ($defaultMap[$type] as $i => $itemText) {
+                $ins->execute([$type, $itemText, $i]);
+            }
+            $stmt->execute([$type]);
+            $rows = $stmt->fetchAll();
+        }
+    }
+
+    echo json_encode($rows);
     exit;
 }
 

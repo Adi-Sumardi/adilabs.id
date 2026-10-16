@@ -11,6 +11,7 @@ import PortfolioPanel from './pages/PortfolioPanel';
 import AdsPanel from './pages/AdsPanel';
 import MarqueePanel from './pages/MarqueePanel';
 import HeroTextPanel from './pages/HeroTextPanel';
+import ChangePasswordPanel from './pages/ChangePasswordPanel';
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="iklan" element={<AdsPanel />} />
             <Route path="running-teks" element={<MarqueePanel />} />
             <Route path="teks-hero" element={<HeroTextPanel />} />
+            <Route path="ganti-password" element={<ChangePasswordPanel />} />
           </Route>
         </Routes>
       </AuthProvider>

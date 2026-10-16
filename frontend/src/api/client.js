@@ -39,6 +39,8 @@ export const authApi = {
     request('/login.php', { method: 'POST', body: JSON.stringify({ email, password }) }),
   logout: () => request('/logout.php', { method: 'POST' }),
   me: () => request('/me.php'),
+  changePassword: (current_password, new_password) =>
+    request('/change-password.php', { method: 'POST', body: JSON.stringify({ current_password, new_password }) }),
 };
 
 function articleFormData({ title, excerpt, content, status, coverFile, removeCover }) {

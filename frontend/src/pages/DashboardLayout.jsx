@@ -8,6 +8,7 @@ const TABS = [
   { to: '/dashboard/iklan', label: 'Iklan' },
   { to: '/dashboard/running-teks', label: 'Running Teks' },
   { to: '/dashboard/teks-hero', label: 'Teks Hero' },
+  { to: '/dashboard/ganti-password', label: '🔑 Ganti Password' },
 ];
 
 export default function DashboardLayout() {

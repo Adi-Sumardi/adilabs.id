@@ -58,7 +58,6 @@ export default function Login() {
           </button>
         </form>
 
-        <p className="auth-hint">adisumardi888@gmail.com / admin123 (ganti setelah login pertama)</p>
       </div>
     </div>
   );

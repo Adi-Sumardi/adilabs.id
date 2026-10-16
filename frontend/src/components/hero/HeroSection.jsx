@@ -243,6 +243,7 @@ export default function HeroSection({ activeVehicle: externalVehicle, setActiveV
           </div>
 
           <ul className="nav-links desktop-only">
+            <li><a href="#about-intro">Tentang</a></li>
             <li><a href="#produk">Produk</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#kontak">Kontak</a></li>
@@ -263,6 +264,7 @@ export default function HeroSection({ activeVehicle: externalVehicle, setActiveV
 
         {mobileMenuOpen && (
           <div className="mobile-nav-dropdown mobile-only">
+            <a href="#about-intro" onClick={() => setMobileMenuOpen(false)}>Tentang</a>
             <a href="#produk" onClick={() => setMobileMenuOpen(false)}>Produk</a>
             <a href="#blog" onClick={() => setMobileMenuOpen(false)}>Blog</a>
             <a href="#kontak" onClick={() => setMobileMenuOpen(false)}>Kontak</a>
