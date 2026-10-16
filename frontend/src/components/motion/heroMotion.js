@@ -6,11 +6,11 @@ export function initHeroMotion(root,{onCta}={}){
   const cv=$('.m-canvas'),ctx=cv.getContext('2d'),stage=$('.m-stage'),flash=$('.m-flash');
   const notif=$('.m-notif'),cta=$('.m-cta'),copyEl=$('.m-copy');
   const SCENES=[
-    {name:'Desain aplikasi',dur:5.5,word:'enak dipakai',sub:'Kami merancang tampilan dan prototipe yang bisa diuji sebelum satu baris kode ditulis.',cap:['UI DESIGN','Layar · komponen · prototipe']},
-    {name:'Database',dur:5,word:'datanya rapi',sub:'Struktur database disusun sejak awal supaya aplikasi tetap cepat saat penggunanya bertambah.',cap:['DATABASE','users · orders · logs']},
-    {name:'Alur sistem',dur:5.5,word:'alurnya jelas',sub:'Setiap proses, dari login sampai notifikasi, dipetakan dan terhubung tanpa celah.',cap:['FLOW','Login → API → Data → Notifikasi']},
-    {name:'Rilis aplikasi',dur:6,word:'siap rilis',sub:'Aplikasi diuji lalu dirilis ke App Store, Play Store, dan web, dan kami dampingi setelahnya.',cap:['RELEASE v1.0.0','App Store · Play Store · Web']},
-    {name:'Mulai proyek',dur:4.5,word:'milik Anda',sub:'Ceritakan ide Anda. Tim AdiLabs mendampingi dari desain sampai rilis.',cap:['ADILABS','Desain · Database · Flow · Rilis']}
+    {name:'Desain aplikasi',dur:5.5,word:'enak dipakai',sub:'Kami merancang tampilan dan prototipe yang bisa diuji sebelum satu baris kode ditulis.',say:'Lagi nyusun layar aplikasimu…',cap:['UI DESIGN','Layar · komponen · prototipe']},
+    {name:'Database',dur:5,word:'datanya rapi',sub:'Struktur database disusun sejak awal supaya aplikasi tetap cepat saat penggunanya bertambah.',say:'Datanya aku rapikan dulu!',cap:['DATABASE','users · orders · logs']},
+    {name:'Alur sistem',dur:5.5,word:'alurnya jelas',sub:'Setiap proses, dari login sampai notifikasi, dipetakan dan terhubung tanpa celah.',say:'Semua alur sudah nyambung.',cap:['FLOW','Login → API → Data → Notifikasi']},
+    {name:'Rilis aplikasi',dur:6,word:'siap rilis',sub:'Aplikasi diuji lalu dirilis ke App Store, Play Store, dan web, dan kami dampingi setelahnya.',say:'Siap-siap… meluncur!',cap:['RELEASE v1.0.0','App Store · Play Store · Web']},
+    {name:'Mulai proyek',dur:4.5,word:'milik Anda',sub:'Ceritakan ide Anda. Tim AdiLabs mendampingi dari desain sampai rilis.',say:'Hai! Yuk mulai proyekmu.',cap:['ADILABS','Desain · Database · Flow · Rilis']}
   ];
   const TOTAL=SCENES.reduce((a,s)=>a+s.dur,0);
   let W=0,H=0,S=0,DPR=1,N=0,P=[],phone=[],db=[],flow=[],rocket=[],word=[],nodes=[],edges=[];
@@ -250,6 +250,24 @@ export function initHeroMotion(root,{onCta}={}){
     ctx.restore();
   }
 
+  /* ---------- maskot ---------- */
+  const mascot=$('.m-mascot'),eyes=$('.m-eyes'),bubble=$('.m-bubble'),bText=$('.m-bubble-text');
+  let typeTimer;
+  function say(txt){clearInterval(typeTimer);bubble.classList.add('out');
+    timers.push(setTimeout(()=>{if(!alive)return;bubble.classList.remove('out');let i=0;bText.textContent='';
+      typeTimer=setInterval(()=>{bText.textContent=txt.slice(0,++i);if(i>=txt.length)clearInterval(typeTimer);},38);},250));}
+  function mood(si,l){
+    mascot.classList.toggle('wave',si===4||(si===0&&l<1.4));
+    mascot.classList.toggle('joy',si===4||(si===3&&l>2.2)||(si===0&&l>4.1));
+  }
+  function lookAt(e){
+    const r=mascot.querySelector('svg').getBoundingClientRect();if(!r.width)return;
+    const dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height*0.37),d=Math.hypot(dx,dy)||1,m=Math.min(1,d/300);
+    eyes.style.transform='translate('+(dx/d*5*m).toFixed(2)+'px,'+(dy/d*3.5*m).toFixed(2)+'px)';
+  }
+  window.addEventListener('pointermove',lookAt);
+  mascot.addEventListener('pointerdown',e=>{e.stopPropagation();mascot.classList.remove('hop');void mascot.offsetWidth;mascot.classList.add('hop');
+    say(['Hehe, geli!','Aku robot AdiLabs.','Klik panggung buat ledakan!'][Math.random()*3|0]);});
   function crossed(l,mark){return prevLocal<mark&&l>=mark;}
 
   function step(now){
@@ -258,13 +276,14 @@ export function initHeroMotion(root,{onCta}={}){
     const s=sceneAt(t),time=now/1000,l=s.local;
     if(s.i!==prevScene){
       if(prevScene!==-1){const fp=funnelPoint(s.i);if(fp){wave(fp.x,fp.y,0.6,0.9);glow(fp.x,fp.y);}}
-      prevScene=s.i;prevLocal=0;setWord(SCENES[s.i]);
+      prevScene=s.i;prevLocal=0;setWord(SCENES[s.i]);say(SCENES[s.i].say);
     }
     // peristiwa dalam adegan
     if(s.i===0){if(crossed(l,1.9)){const c=cursorAt(1.95);wave(c.x,c.y,0.25,0.7);}
       if(crossed(l,3.3)){const c=PH.card;wave(c.x+c.w/2,c.y+c.h/2,0.35,0.8);}
       if(crossed(l,4.1)){wave(PH.btn.x,PH.btn.y,0.45,1);glow(PH.btn.x,PH.btn.y);}}
     if(s.i===3&&crossed(l,2.2)){wave(nozzle.x,nozzle.y,0.8,1);glow(nozzle.x,nozzle.y);}
+    mood(s.i,l);
     notif.classList.toggle('show',s.i===3&&l>2.7&&l<5.7);
     cta.classList.toggle('show',s.i===4&&l>1.4);
     prevLocal=l;
@@ -326,5 +345,5 @@ export function initHeroMotion(root,{onCta}={}){
   Promise.race([fontWait,new Promise(r=>timers.push(setTimeout(r,800)))]).then(boot);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(started&&alive)try{word=mkWord(N);}catch(e){}});
 
-  return()=>{alive=false;cancelAnimationFrame(raf);clearTimeout(rt);timers.forEach(clearTimeout);ro.disconnect();io.disconnect();};
+  return()=>{alive=false;cancelAnimationFrame(raf);clearInterval(typeTimer);window.removeEventListener('pointermove',lookAt);clearTimeout(rt);timers.forEach(clearTimeout);ro.disconnect();io.disconnect();};
 }

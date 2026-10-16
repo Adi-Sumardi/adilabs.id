@@ -83,3 +83,35 @@
   .motion-section .m-notif b { font-size: 11px; }
   .motion-section .m-notif time { font-size: 9px; }
 }
+
+/* Maskot robot AI (dari mascot.html) */
+.motion-section .m-mascot { display: flex; align-items: flex-end; gap: 10px; pointer-events: auto; margin-bottom: -4px; }
+.motion-section .m-mascot svg { width: clamp(44px,8vw,104px); height: auto; overflow: visible; cursor: pointer; flex: none; }
+.motion-section .m-bot { animation: m-float 3.2s ease-in-out infinite; transform-origin: 60px 80px; }
+.motion-section .m-shadow { animation: m-shadow 3.2s ease-in-out infinite; transform-origin: 60px 134px; }
+@keyframes m-float { 50% { transform: translateY(-7px) rotate(-2deg); } }
+@keyframes m-shadow { 50% { transform: scaleX(.78); opacity: .5; } }
+.motion-section .m-lids { animation: m-blink 4.2s infinite; transform-origin: 60px 52px; }
+@keyframes m-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+.motion-section .m-bulb { animation: m-bulb 1.4s ease-in-out infinite; }
+@keyframes m-bulb { 50% { fill: #ffaa5a; r: 6.2; } }
+.motion-section .m-chest { animation: m-chest 1.8s ease-in-out infinite; }
+@keyframes m-chest { 50% { opacity: .45; } }
+.motion-section .m-arm-r { transform-origin: 88px 92px; transition: transform .4s; }
+.motion-section .m-mascot.wave .m-arm-r { animation: m-wave .9s ease-in-out infinite; }
+@keyframes m-wave { 0%, 100% { transform: rotate(-150deg); } 50% { transform: rotate(-115deg); } }
+.motion-section .m-happy { opacity: 0; transition: opacity .2s; }
+.motion-section .m-mascot.joy .m-happy { opacity: 1; }
+.motion-section .m-mascot.joy .m-eye { opacity: 0; }
+.motion-section .m-eyes { transition: transform .25s ease-out; }
+.motion-section .m-mascot.hop .m-bot { animation: m-hop .6s cubic-bezier(.3,1.6,.5,1); }
+@keyframes m-hop { 40% { transform: translateY(-22px) rotate(6deg); } }
+.motion-section .m-bubble {
+  position: relative; align-self: center; margin-bottom: clamp(18px,3vw,40px); background: var(--m-bg); border: 1px solid var(--m-line); border-radius: 14px 14px 14px 4px;
+  padding: 7px 12px; font-family: var(--m-f-mono); font-size: clamp(9px,1vw,12px); color: var(--m-crimson); white-space: nowrap;
+  box-shadow: 0 10px 24px -14px rgba(155,10,29,.5); transition: transform .3s, opacity .3s;
+}
+.motion-section .m-bubble.out { opacity: 0; transform: translateY(4px) scale(.96); }
+.motion-section .m-caret { display: inline-block; width: 6px; height: 1em; vertical-align: -2px; background: var(--m-red); margin-left: 2px; animation: m-caret .8s steps(1) infinite; }
+@keyframes m-caret { 50% { opacity: 0; } }
+@media (max-width: 640px) { .motion-section .m-bubble { display: none; } }
