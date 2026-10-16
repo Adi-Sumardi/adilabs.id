@@ -26,11 +26,6 @@ export default function MotionSection() {
             aria-label="Partikel merah membentuk layar aplikasi, tumpukan database, diagram alur, roket rilis, lalu logo AdiLabs"
           />
           <div className="m-flash" />
-          <div className="m-readout" aria-hidden="true">
-            PARTIKEL <span className="m-pc">0</span><br />
-            ADEGAN <span className="m-sc">01</span>/05<br />
-            T+ <span className="m-tc">00.0</span>s
-          </div>
           <div className="m-notif" aria-hidden="true">
             <div className="m-ic">a</div>
             <div><b>AdiLabs App</b><span>Versi 1.0 sudah tersedia. Ketuk untuk memasang.</span></div>

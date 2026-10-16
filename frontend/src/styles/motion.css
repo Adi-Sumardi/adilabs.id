@@ -50,8 +50,6 @@
 .motion-section .m-swap.out { opacity: 0; transform: translateY(40%); }
 .motion-section .m-sub { margin: 0; transition: opacity .35s, transform .35s; min-height: 3em; color: var(--m-muted); font-size: clamp(11px,1.35vw,16px); line-height: 1.5; max-width: 44ch; }
 .motion-section .m-sub.out { opacity: 0; transform: translateY(6px); }
-.motion-section .m-readout { position: absolute; top: clamp(12px,2.4vw,26px); right: clamp(12px,2.4vw,26px); font-family: var(--m-f-mono); font-size: clamp(9px,1vw,11px); color: var(--m-muted); text-align: right; line-height: 1.7; font-variant-numeric: tabular-nums; pointer-events: none; }
-.motion-section .m-readout span { color: var(--m-red); font-weight: 500; }
 
 .motion-section .m-notif {
   position: absolute; left: clamp(16px,4vw,52px); top: 14%; width: min(330px,62%); display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center;
@@ -75,7 +73,6 @@
   .motion-section { padding-block: 40px; }
   .motion-section .m-copy { max-width: 80%; }
   .motion-section .m-sub { display: none; }
-  .motion-section .m-readout { display: none; }
   .motion-section .m-cta { top: 32%; }
   .motion-section .m-cta span { display: none; }
   .motion-section .m-cta button { padding: 6px 14px; font-size: 11px; }

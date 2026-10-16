@@ -4,7 +4,7 @@ export function initHeroMotion(root,{onCta}={}){
   let alive=true,visible=true,raf=0;const timers=[];
   const $=sel=>root.querySelector(sel);
   const cv=$('.m-canvas'),ctx=cv.getContext('2d'),stage=$('.m-stage'),flash=$('.m-flash');
-  const notif=$('.m-notif'),cta=$('.m-cta'),copyEl=$('.m-copy'),pcEl=$('.m-pc'),scEl=$('.m-sc'),tcEl=$('.m-tc');
+  const notif=$('.m-notif'),cta=$('.m-cta'),copyEl=$('.m-copy');
   const SCENES=[
     {name:'Desain aplikasi',dur:5.5,word:'enak dipakai',sub:'Kami merancang tampilan dan prototipe yang bisa diuji sebelum satu baris kode ditulis.',cap:['UI DESIGN','Layar · komponen · prototipe']},
     {name:'Database',dur:5,word:'datanya rapi',sub:'Struktur database disusun sejak awal supaya aplikasi tetap cepat saat penggunanya bertambah.',cap:['DATABASE','users · orders · logs']},
@@ -100,7 +100,6 @@ export function initHeroMotion(root,{onCta}={}){
     N=Math.round(Math.min(3200,Math.max(900,W*H/230)));
     phone=mkPhone(N);db=mkDB(N);flow=mkFlow(N);rocket=mkRocket(N);word=mkWord(N);
     if(P.length!==N)P=Array.from({length:N},(_,i)=>({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,i,r:Math.random(),z:0,hot:0,fade:1}));
-    pcEl.textContent=N.toLocaleString('id-ID');
   }
 
   /* ---------- transisi bermakna: tiap adegan diawali partikel berkumpul di satu titik dari adegan sebelumnya ---------- */
@@ -260,7 +259,6 @@ export function initHeroMotion(root,{onCta}={}){
     if(s.i!==prevScene){
       if(prevScene!==-1){const fp=funnelPoint(s.i);if(fp){wave(fp.x,fp.y,0.6,0.9);glow(fp.x,fp.y);}}
       prevScene=s.i;prevLocal=0;setWord(SCENES[s.i]);
-     scEl.textContent='0'+(s.i+1);
     }
     // peristiwa dalam adegan
     if(s.i===0){if(crossed(l,1.9)){const c=cursorAt(1.95);wave(c.x,c.y,0.25,0.7);}
@@ -270,7 +268,6 @@ export function initHeroMotion(root,{onCta}={}){
     notif.classList.toggle('show',s.i===3&&l>2.7&&l<5.7);
     cta.classList.toggle('show',s.i===4&&l>1.4);
     prevLocal=l;
-    tcEl.textContent=t.toFixed(1).padStart(4,'0');
 
     // efek gulir
     const sr=stage.getBoundingClientRect();scroll=clamp(-sr.top/(sr.height*0.75),0,1);
