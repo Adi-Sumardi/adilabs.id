@@ -38,8 +38,6 @@ export default function ProfileHeroSection() {
 
           <ul className="profile-nav-links desktop-only">
             <li><a href="#" className="active">Home</a></li>
-            <li><a href="#produk">Works</a></li>
-            <li><a href="#blog">Articles</a></li>
             <li><a href="#kontak">Services</a></li>
           </ul>
 
@@ -63,8 +61,6 @@ export default function ProfileHeroSection() {
         {mobileMenuOpen && (
           <div className="profile-mobile-menu mobile-only">
             <a href="#" onClick={() => setMobileMenuOpen(false)}>Home</a>
-            <a href="#produk" onClick={() => setMobileMenuOpen(false)}>Works</a>
-            <a href="#blog" onClick={() => setMobileMenuOpen(false)}>Articles</a>
             <a href="#kontak" onClick={() => setMobileMenuOpen(false)}>Services</a>
             <a href="#kontak" onClick={() => setMobileMenuOpen(false)} style={{ color: '#e63946', fontWeight: 700 }}>Contact</a>
           </div>
@@ -173,14 +169,14 @@ export default function ProfileHeroSection() {
         </div>
 
         {/* Scroll down trigger */}
-        <a href="#produk" className="hero-scroll-indicator" aria-label="Scroll to projects">
+        <a href="#kontak" className="hero-scroll-indicator" aria-label="Scroll to contact">
           <div className="scroll-arrow-circle">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <polyline points="19 12 12 19 5 12"></polyline>
             </svg>
           </div>
-          <span className="scroll-caption">EXPLORE WORKS</span>
+          <span className="scroll-caption">GET IN TOUCH</span>
         </a>
       </div>
     </header>

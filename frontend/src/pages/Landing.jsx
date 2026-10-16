@@ -7,8 +7,8 @@ import '../styles/sections.css';
 export default function Landing() {
   return (
     <div className="landing-page-root">
-      <ProfileHeroSection />
       <MotionSection />
+      <ProfileHeroSection />
       <ContactSection />
     </div>
   );

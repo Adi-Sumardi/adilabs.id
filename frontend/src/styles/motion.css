@@ -13,7 +13,8 @@
   background: var(--m-bg);
   color: var(--m-ink);
   font-family: var(--m-f-body);
-  padding: 64px max(16px, env(safe-area-inset-right, 0px)) 64px max(16px, env(safe-area-inset-left, 0px));
+  /* section pertama di halaman: padding atas memberi ruang untuk navbar fixed */
+  padding: 120px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));
 }
 .motion-section *, .motion-section *::before, .motion-section *::after { box-sizing: border-box; }
 .motion-section .m-wrap { max-width: 1240px; margin: 0 auto; }
@@ -70,7 +71,7 @@
 .motion-section .m-cta span { font-size: clamp(10px,1.1vw,13px); color: var(--m-muted); }
 
 @media (max-width: 640px) {
-  .motion-section { padding-block: 40px; }
+  .motion-section { padding-top: 84px; padding-bottom: 16px; }
   .motion-section .m-copy { max-width: 80%; }
   .motion-section .m-sub { display: none; }
   .motion-section .m-cta { top: 32%; }
