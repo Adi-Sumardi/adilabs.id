@@ -114,4 +114,8 @@
 .motion-section .m-bubble.out { opacity: 0; transform: translateY(4px) scale(.96); }
 .motion-section .m-caret { display: inline-block; width: 6px; height: 1em; vertical-align: -2px; background: var(--m-red); margin-left: 2px; animation: m-caret .8s steps(1) infinite; }
 @keyframes m-caret { 50% { opacity: 0; } }
-@media (max-width: 640px) { .motion-section .m-bubble { display: none; } }
+@media (max-width: 640px) {
+  .motion-section .m-mascot { gap: 6px; }
+  .motion-section .m-bubble { margin-bottom: 14px; padding: 4px 8px; font-size: 9px; line-height: 1.35; border-radius: 10px 10px 10px 3px; white-space: normal; max-width: 52vw; }
+  .motion-section .m-caret { width: 4px; }
+}
