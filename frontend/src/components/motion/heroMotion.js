@@ -543,6 +543,7 @@ export function initHeroMotion(host,{footHost,onCta}={}){
       bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
       chart:'<path d="M5 20V10M11 20V4M17 20v-7M3 20h18"/>',
       send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>',
+      note:'<path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3z"/><path d="M13.5 6.5l3 3"/>',
       clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
       cam:'<path d="M4 8a2 2 0 0 1 2-2h2l2-2h4l2 2h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/>',
       face:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0"/>'
@@ -553,6 +554,7 @@ export function initHeroMotion(host,{footHost,onCta}={}){
       {in:['mic','Rekaman rapat 45 menit'],ai:'AI',act:'Menyusun ringkasan, keputusan, dan tugas per orang',gate:'Cek ringkasan rapat',out:['list','3 tugas terkirim ke peserta'],wa:1},
       {in:['clock','Absensi, cuti & lembur'],ai:'Otomatis',act:'Merekap kehadiran, keterlambatan, cuti, dan lembur',gate:'HR menyetujui cuti & lembur',out:['list','Rekap siap untuk penggajian']},
       {in:['cam','Selfie check-in + lokasi'],ai:'AI',act:'Cek wajah asli (liveness), cocokkan wajah, dan cek lokasi',gate:'Atasan meninjau yang ditolak',out:['face','Check-in sah tercatat']},
+      {in:['note','Catatan kerja, foto & voice note'],ai:'AI',act:'Merapikan catatan jadi laporan: progres, kendala, dan rencana besok',gate:'Atasan meninjau & memberi catatan',out:['form','Laporan harian rapi & lengkap']},
       {in:['users','Data siswa & tarif SPP'],ai:'Otomatis',act:'Menerbitkan tagihan dan menjadwalkan pengingat',gate:'Bendahara memantau tunggakan',out:['bell','Pengingat WA ke 6 orang tua'],wa:1},
       {in:['chat','Pertanyaan orang tua'],ai:'AI',act:'Menjawab dari data PMB dan tagihan resmi',gate:'Staf ambil alih yang sulit',out:['send','Jawaban terkirim, 24 jam'],wa:1},
       {in:['chart','Data akuntansi bulanan'],ai:'AI',act:'Menyusun laporan dan ringkasan bahasa sehari-hari',gate:'Bendahara meninjau laporan',out:['send','Laporan ke pengurus & donatur'],wa:1}
