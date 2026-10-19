@@ -447,7 +447,7 @@ export function initHeroMotion(host,{footHost,onCta}={}){
   const nbtns=$$('.wfilter button');
   nbtns.forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.f;nbtns.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
     const first=new Map(cards.filter(c=>!c.hidden).map(c=>[c,c.getBoundingClientRect()]));
-    cards.forEach(c=>{c.hidden=!(f==='all'||c.dataset.cat===f||c.dataset.cat==='all');c.classList.remove('pre','fade');});
+    cards.forEach(c=>{c.hidden=!(f==='all'||c.dataset.cat.split(' ').includes(f)||c.dataset.cat==='all');c.classList.remove('pre','fade');});
     cards.filter(c=>!c.hidden).forEach((c,i)=>{const r=c.getBoundingClientRect(),o=first.get(c);
       const kf=o?[{transform:'translate('+(o.left-r.left)+'px,'+(o.top-r.top)+'px)'},{transform:'none'}]:[{transform:'translateY(30px) scale(.9)',opacity:.1},{transform:'none',opacity:1}];
       c.animate(kf,{duration:650,delay:o?0:i*40,easing:'cubic-bezier(.2,1.2,.35,1)'});});
