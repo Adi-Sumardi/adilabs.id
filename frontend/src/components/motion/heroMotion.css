@@ -803,46 +803,6 @@ fieldset.fl{border:0;margin:0;padding:0}
 .ig-pin{padding-top:calc(clamp(24px,5vh,56px) + 76px)}
 .ig{width:min(100%,calc((100vh - 330px) * 1200 / 660))}
 
-/* ===== AI & otomasi ===== */
-.aiw{display:flex;flex-direction:column;gap:clamp(28px,4vw,40px)}
-.aig{display:flex;flex-direction:column;gap:14px}
-.aig-h span{display:inline-flex;align-items:center;gap:10px;font:600 15px var(--f-body);color:var(--ink)}
-.aig-h span::after{content:"";width:48px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--red),transparent)}
-.aig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.aic{position:relative;min-width:0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;overflow:hidden;
-  transition:transform .45s cubic-bezier(.2,1.3,.4,1),box-shadow .45s,border-color .45s}
-.aic::before{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,82,.16),transparent 70%);pointer-events:none}
-.aic:hover{transform:translateY(-6px);border-color:#f0b3ad;box-shadow:0 26px 44px -26px rgba(155,10,29,.45)}
-.aic.rv.pre{transform:translateY(34px)}
-.aic-top{display:flex;justify-content:space-between;align-items:center}
-.aic-ic{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--coral),var(--red) 55%,var(--crimson));display:grid;place-items:center;box-shadow:0 10px 18px -10px rgba(227,18,43,.8)}
-.aic-ic svg{width:20px;height:20px;stroke:#fff}
-.aic:hover .aic-ic{animation:wig .7s cubic-bezier(.3,1.6,.4,1)}
-.aic-tag{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);background:var(--blush);padding:5px 9px;border-radius:99px}
-.aic h3{margin:4px 0 0;font:600 18px/1.25 var(--f-display);letter-spacing:-.015em}
-.aic p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
-.aic-flow{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;position:relative}
-.aic-flow::before{content:"";position:absolute;left:15px;top:16px;bottom:16px;width:2px;border-radius:2px;background:linear-gradient(var(--line),var(--coral),var(--line))}
-.aic-flow li{position:relative;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;font-size:13.5px;line-height:1.4;color:#5a3d42}
-.aic-flow b{position:relative;z-index:1;min-width:32px;height:32px;padding:0 9px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;gap:5px;
-  font:600 11px var(--f-mono);letter-spacing:.04em;background:#fff;border:1.5px solid var(--line);color:var(--muted)}
-.aic-flow b svg{width:13px;height:13px;stroke:currentColor}
-.aic-flow li.ai b,.aic-flow li.auto b{color:#fff;border-color:transparent;background:linear-gradient(110deg,var(--crimson),var(--red) 45%,var(--coral) 55%,var(--red) 65%,var(--crimson));background-size:260% 100%;
-  animation:aishine 3.2s linear infinite;box-shadow:0 8px 16px -8px rgba(227,18,43,.7)}
-.aic-flow li.ai span,.aic-flow li.auto span{color:var(--ink);font-weight:600}
-@keyframes aishine{from{background-position:100% 0}to{background-position:-160% 0}}
-.aic-flow li.you b{color:#1f7a45;border-color:#bfe6cd;background:#effaf3}
-.aip{margin-top:clamp(24px,3vw,32px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.6vw,32px);padding:clamp(20px,3vw,32px);border-radius:24px;
-  background:var(--ink);color:#fff;position:relative;overflow:hidden}
-.aip::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1.3px);background-size:22px 22px;mask-image:radial-gradient(80% 120% at 0% 0%,#000,transparent 70%);pointer-events:none}
-.aip div{position:relative;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
-.aip i{grid-row:span 2;width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center}
-.aip i svg{width:18px;height:18px;stroke:#ff8a7a}
-.aip b{font:600 16px/1.3 var(--f-display);letter-spacing:-.01em}
-.aip span{color:#e9cfcf;font-size:14px;line-height:1.5}
-@media (max-width:1000px){.aig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aip{grid-template-columns:1fr}}
-@media (max-width:620px){.aig-grid{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){.aic-flow li.ai b,.aic-flow li.auto b{animation:none}}
 
 /* ===== contoh karya: fitur diperagakan dengan animasi (loop 9 detik) ===== */
 .wt{position:absolute;left:9px;right:9px;bottom:84px;z-index:4;display:flex;gap:8px;align-items:center;padding:8px 9px;border-radius:13px;background:rgba(255,255,255,.97);

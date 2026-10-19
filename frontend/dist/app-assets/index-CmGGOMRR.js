@@ -813,46 +813,6 @@ fieldset.fl{border:0;margin:0;padding:0}
 .ig-pin{padding-top:calc(clamp(24px,5vh,56px) + 76px)}
 .ig{width:min(100%,calc((100vh - 330px) * 1200 / 660))}
 
-/* ===== AI & otomasi ===== */
-.aiw{display:flex;flex-direction:column;gap:clamp(28px,4vw,40px)}
-.aig{display:flex;flex-direction:column;gap:14px}
-.aig-h span{display:inline-flex;align-items:center;gap:10px;font:600 15px var(--f-body);color:var(--ink)}
-.aig-h span::after{content:"";width:48px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--red),transparent)}
-.aig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.aic{position:relative;min-width:0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;overflow:hidden;
-  transition:transform .45s cubic-bezier(.2,1.3,.4,1),box-shadow .45s,border-color .45s}
-.aic::before{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,82,.16),transparent 70%);pointer-events:none}
-.aic:hover{transform:translateY(-6px);border-color:#f0b3ad;box-shadow:0 26px 44px -26px rgba(155,10,29,.45)}
-.aic.rv.pre{transform:translateY(34px)}
-.aic-top{display:flex;justify-content:space-between;align-items:center}
-.aic-ic{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--coral),var(--red) 55%,var(--crimson));display:grid;place-items:center;box-shadow:0 10px 18px -10px rgba(227,18,43,.8)}
-.aic-ic svg{width:20px;height:20px;stroke:#fff}
-.aic:hover .aic-ic{animation:wig .7s cubic-bezier(.3,1.6,.4,1)}
-.aic-tag{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);background:var(--blush);padding:5px 9px;border-radius:99px}
-.aic h3{margin:4px 0 0;font:600 18px/1.25 var(--f-display);letter-spacing:-.015em}
-.aic p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
-.aic-flow{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;position:relative}
-.aic-flow::before{content:"";position:absolute;left:15px;top:16px;bottom:16px;width:2px;border-radius:2px;background:linear-gradient(var(--line),var(--coral),var(--line))}
-.aic-flow li{position:relative;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;font-size:13.5px;line-height:1.4;color:#5a3d42}
-.aic-flow b{position:relative;z-index:1;min-width:32px;height:32px;padding:0 9px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;gap:5px;
-  font:600 11px var(--f-mono);letter-spacing:.04em;background:#fff;border:1.5px solid var(--line);color:var(--muted)}
-.aic-flow b svg{width:13px;height:13px;stroke:currentColor}
-.aic-flow li.ai b,.aic-flow li.auto b{color:#fff;border-color:transparent;background:linear-gradient(110deg,var(--crimson),var(--red) 45%,var(--coral) 55%,var(--red) 65%,var(--crimson));background-size:260% 100%;
-  animation:aishine 3.2s linear infinite;box-shadow:0 8px 16px -8px rgba(227,18,43,.7)}
-.aic-flow li.ai span,.aic-flow li.auto span{color:var(--ink);font-weight:600}
-@keyframes aishine{from{background-position:100% 0}to{background-position:-160% 0}}
-.aic-flow li.you b{color:#1f7a45;border-color:#bfe6cd;background:#effaf3}
-.aip{margin-top:clamp(24px,3vw,32px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.6vw,32px);padding:clamp(20px,3vw,32px);border-radius:24px;
-  background:var(--ink);color:#fff;position:relative;overflow:hidden}
-.aip::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1.3px);background-size:22px 22px;mask-image:radial-gradient(80% 120% at 0% 0%,#000,transparent 70%);pointer-events:none}
-.aip div{position:relative;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
-.aip i{grid-row:span 2;width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center}
-.aip i svg{width:18px;height:18px;stroke:#ff8a7a}
-.aip b{font:600 16px/1.3 var(--f-display);letter-spacing:-.01em}
-.aip span{color:#e9cfcf;font-size:14px;line-height:1.5}
-@media (max-width:1000px){.aig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aip{grid-template-columns:1fr}}
-@media (max-width:620px){.aig-grid{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){.aic-flow li.ai b,.aic-flow li.auto b{animation:none}}
 
 /* ===== contoh karya: fitur diperagakan dengan animasi (loop 9 detik) ===== */
 .wt{position:absolute;left:9px;right:9px;bottom:84px;z-index:4;display:flex;gap:8px;align-items:center;padding:8px 9px;border-radius:13px;background:rgba(255,255,255,.97);
@@ -1127,92 +1087,6 @@ fieldset.fl{border:0;margin:0;padding:0}
     </div>
   </section>
 
-  <!-- ===== AI & OTOMASI ===== -->
-  <section class="sec" id="ai">
-    <div class="shead rv">
-      <span class="kick">AI &amp; otomasi</span>
-      <h2>AI yang bekerja di dalam <em>alur kerja Anda</em></h2>
-      <p>Bukan chatbot terpisah. AI membaca dokumen, memeriksa pengajuan, dan mengirim pengingat, sementara keputusan akhir tetap di tangan Anda.</p>
-    </div>
-    <div class="aiw">
-      <div class="aig">
-        <div class="aig-h rv"><span>Untuk kantor</span></div>
-        <div class="aig-grid">
-        <article class="aic rv" style="--i:0">
-          <div class="aic-top"><span class="aic-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span><span class="aic-tag">Kantor</span></div>
-          <h3>Rekening koran jadi jurnal otomatis</h3>
-          <p>Unggah PDF rekening koran atau foto nota. Transaksi terbaca dan tercatat sendiri, tim keuangan cukup memeriksa yang ditandai.</p>
-          <ol class="aic-flow">
-            <li><b>Masuk</b><span>PDF rekening koran &amp; foto nota</span></li>
-            <li class="ai"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 .3.3-2 .7"/></svg>AI</b><span>Membaca transaksi, mencocokkan dengan catatan, menandai yang janggal</span></li>
-            <li class="you"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anda</b><span>Periksa yang ditandai, lalu posting ke jurnal</span></li>
-          </ol>
-        </article>
-        <article class="aic rv" style="--i:1">
-          <div class="aic-top"><span class="aic-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="aic-tag">Kantor</span></div>
-          <h3>Approval anggaran yang dicek AI</h3>
-          <p>Setiap pengajuan diperiksa dulu sebelum sampai ke meja Anda, dan semua pihak mendapat kabar lewat WhatsApp.</p>
-          <ol class="aic-flow">
-            <li><b>Masuk</b><span>Pengajuan anggaran + lampiran</span></li>
-            <li class="ai"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 .3.3-2 .7"/></svg>AI</b><span>Cek dokumen kurang, melebihi plafon, atau pengajuan ganda</span></li>
-            <li class="you"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anda</b><span>Setujui atau tolak, notifikasi terkirim lewat WA</span></li>
-          </ol>
-        </article>
-        <article class="aic rv" style="--i:2">
-          <div class="aic-top"><span class="aic-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><span class="aic-tag">Kantor</span></div>
-          <h3>Notulen rapat AI</h3>
-          <p>Rapat cukup direkam. Ringkasan, keputusan, dan daftar tugas tersusun sendiri, lalu dikirim ke penanggung jawabnya.</p>
-          <ol class="aic-flow">
-            <li><b>Masuk</b><span>Rekaman rapat</span></li>
-            <li class="ai"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 .3.3-2 .7"/></svg>AI</b><span>Ringkasan, keputusan, dan tugas per orang</span></li>
-            <li class="you"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anda</b><span>Cek ringkasan, tugas terkirim lewat WA &amp; email</span></li>
-          </ol>
-        </article>
-        </div>
-      </div>
-      <div class="aig">
-        <div class="aig-h rv"><span>Untuk yayasan &amp; sekolah</span></div>
-        <div class="aig-grid">
-        <article class="aic rv" style="--i:3">
-          <div class="aic-top"><span class="aic-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="aic-tag">Yayasan</span></div>
-          <h3>Tagihan SPP &amp; pengingat otomatis</h3>
-          <p>Tagihan terbit tiap bulan, orang tua diingatkan lewat WhatsApp, dan bendahara langsung melihat siapa yang menunggak.</p>
-          <ol class="aic-flow">
-            <li><b>Masuk</b><span>Data siswa &amp; tarif SPP</span></li>
-            <li class="auto"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 .3.3-2 .7"/></svg>Otomatis</b><span>Terbitkan tagihan, kirim pengingat WA, catat pembayaran</span></li>
-            <li class="you"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anda</b><span>Bendahara memantau rekap tunggakan</span></li>
-          </ol>
-        </article>
-        <article class="aic rv" style="--i:4">
-          <div class="aic-top"><span class="aic-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span><span class="aic-tag">Yayasan</span></div>
-          <h3>Asisten WhatsApp 24 jam</h3>
-          <p>Calon murid dan orang tua bisa bertanya kapan saja: info PMB, status berkas, sampai tagihan. Pertanyaan sulit diteruskan ke staf.</p>
-          <ol class="aic-flow">
-            <li><b>Masuk</b><span>Pertanyaan lewat WhatsApp</span></li>
-            <li class="ai"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 .3.3-2 .7"/></svg>AI</b><span>Menjawab dari data PMB &amp; tagihan resmi</span></li>
-            <li class="you"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anda</b><span>Staf mengambil alih pertanyaan yang sulit</span></li>
-          </ol>
-        </article>
-        <article class="aic rv" style="--i:5">
-          <div class="aic-top"><span class="aic-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M11 20V4M17 20v-7M3 20h18"/></svg></span><span class="aic-tag">Yayasan</span></div>
-          <h3>Laporan pengurus &amp; donatur otomatis</h3>
-          <p>Laporan keuangan bulanan tersusun dari data akuntansi, lengkap dengan ringkasan yang mudah dibaca pengurus.</p>
-          <ol class="aic-flow">
-            <li><b>Masuk</b><span>Data akuntansi bulanan</span></li>
-            <li class="ai"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 2 .3.3-2 .7"/></svg>AI</b><span>Menyusun laporan + ringkasan bahasa sehari-hari</span></li>
-            <li class="you"><b><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anda</b><span>Tinjau, lalu kirim ke pengurus &amp; donatur</span></li>
-          </ol>
-        </article>
-        </div>
-      </div>
-    </div>
-    <div class="aip rv">
-      <div><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></i><b>Keputusan tetap di manusia</b><span>AI menyiapkan dan menandai. Persetujuan tetap dilakukan orang yang berwenang.</span></div>
-      <div><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/></svg></i><b>Terhubung WhatsApp &amp; email</b><span>Pengingat dan notifikasi langsung sampai ke HP tim, orang tua, atau pengurus.</span></div>
-      <div><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></i><b>Data tetap terjaga</b><span>Bisa dipasang di server Anda sendiri, dengan hak akses dan jejak audit untuk kebutuhan UU PDP.</span></div>
-    </div>
-  </section>
-
   <!-- ===== PROSES ===== -->
   <section class="sec" id="proses">
     <div class="ig-wrap" id="igw">
@@ -1390,7 +1264,7 @@ fieldset.fl{border:0;margin:0;padding:0}
 `,rr=`<div class="wrap">
   <footer class="foot">
     <div class="brand">adi<b>labs</b></div>
-    <nav aria-label="Navigasi bawah"><a href="#layanan">Layanan</a><a href="#ai">AI &amp; otomasi</a><a href="#proses">Cara kerja</a><a href="#karya">Contoh karya</a></nav>
+    <nav aria-label="Navigasi bawah"><a href="#layanan">Layanan</a><a href="#proses">Cara kerja</a><a href="#karya">Contoh karya</a></nav>
     <span>© 2026 AdiLabs</span>
   </footer>
   <div class="bigmark" id="bigmark" aria-hidden="true"></div>
