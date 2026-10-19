@@ -552,8 +552,6 @@ export function initHeroMotion(host,{footHost,onCta}={}){
       {in:['pdf','PDF rekening koran'],ai:'AI',act:'Membaca 48 transaksi, mencocokkan, menandai yang janggal',gate:'Periksa 2 transaksi yang ditandai',out:['book','46 jurnal tercatat otomatis']},
       {in:['form','Pengajuan anggaran #128'],ai:'AI',act:'Cek lampiran, plafon, dan pengajuan ganda',gate:'Manajer & finance menyetujui',out:['chat','Pemohon dikabari lewat WhatsApp'],wa:1},
       {in:['mic','Rekaman rapat 45 menit'],ai:'AI',act:'Menyusun ringkasan, keputusan, dan tugas per orang',gate:'Cek ringkasan rapat',out:['list','3 tugas terkirim ke peserta'],wa:1},
-      {in:['clock','Absensi, cuti & lembur'],ai:'Otomatis',act:'Merekap kehadiran, keterlambatan, cuti, dan lembur',gate:'HR menyetujui cuti & lembur',out:['list','Rekap siap untuk penggajian']},
-      {in:['cam','Selfie check-in + lokasi'],ai:'AI',act:'Cek wajah asli (liveness), cocokkan wajah, dan cek lokasi',gate:'Atasan meninjau yang ditolak',out:['face','Check-in sah tercatat']},
       {in:['note','Catatan kerja, foto & voice note'],ai:'AI',act:'Merapikan catatan jadi laporan: progres, kendala, dan rencana besok',gate:'Atasan meninjau & memberi catatan',out:['form','Laporan harian rapi & lengkap']},
       {in:['users','Data siswa & tarif SPP'],ai:'Otomatis',act:'Menerbitkan tagihan dan menjadwalkan pengingat',gate:'Bendahara memantau tunggakan',out:['bell','Pengingat WA ke 6 orang tua'],wa:1},
       {in:['chat','Pertanyaan orang tua'],ai:'AI',act:'Menjawab dari data PMB dan tagihan resmi',gate:'Staf ambil alih yang sulit',out:['send','Jawaban terkirim, 24 jam'],wa:1},
