@@ -1,10 +1,14 @@
-/* Wadah hero motion. Gaya animasinya sendiri ada di components/motion/heroMotion.css (di dalam Shadow DOM). */
-.motion-section {
+/* Wadah hero motion + section di bawahnya. Gaya animasinya sendiri ada di components/motion/heroMotion.css (di dalam Shadow DOM). */
+.motion-section,
+.motion-footer {
+  display: block;
   background: #ffffff;
-  /* section pertama di halaman: padding atas memberi ruang untuk navbar fixed */
-  padding: 120px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.motion-section .m-wrap { max-width: 1240px; margin: 0 auto; }
+/* section pertama di halaman: padding atas memberi ruang untuk navbar fixed */
+.motion-section { padding-top: 120px; padding-bottom: 24px; }
+.motion-footer { padding-bottom: 40px; }
 
 @media (max-width: 640px) {
   .motion-section { padding-top: 84px; padding-bottom: 16px; }

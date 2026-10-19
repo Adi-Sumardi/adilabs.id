@@ -38,7 +38,7 @@ export default function ProfileHeroSection() {
 
           <ul className="profile-nav-links desktop-only">
             <li><a href="#" className="active">Home</a></li>
-            <li><a href="#kontak">Services</a></li>
+            <li><a href="#layanan">Services</a></li>
           </ul>
 
           <div className="nav-action-wrap desktop-only">
@@ -61,7 +61,7 @@ export default function ProfileHeroSection() {
         {mobileMenuOpen && (
           <div className="profile-mobile-menu mobile-only">
             <a href="#" onClick={() => setMobileMenuOpen(false)}>Home</a>
-            <a href="#kontak" onClick={() => setMobileMenuOpen(false)}>Services</a>
+            <a href="#layanan" onClick={() => setMobileMenuOpen(false)}>Services</a>
             <a href="#kontak" onClick={() => setMobileMenuOpen(false)} style={{ color: '#e63946', fontWeight: 700 }}>Contact</a>
           </div>
         )}
