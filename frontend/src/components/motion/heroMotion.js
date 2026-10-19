@@ -528,5 +528,92 @@ export function initHeroMotion(host,{footHost,onCta}={}){
   _raf(frame);
 })();
 
+  /* ================= AI & otomasi: infografis animasi ================= */
+  (function(){
+    const box=gid('aix');if(!box)return;
+    const SV=d=>'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>';
+    const I={
+      pdf:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+      book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7M8 11h7"/>',
+      form:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+      mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+      list:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>',
+      users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-2-4.7"/>',
+      chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
+      bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+      chart:'<path d="M5 20V10M11 20V4M17 20v-7M3 20h18"/>',
+      send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>'
+    };
+    const SC=[
+      {in:['pdf','PDF rekening koran'],ai:'AI',act:'Membaca 48 transaksi, mencocokkan, menandai yang janggal',gate:'Periksa 2 transaksi yang ditandai',out:['book','46 jurnal tercatat otomatis']},
+      {in:['form','Pengajuan anggaran #128'],ai:'AI',act:'Cek lampiran, plafon, dan pengajuan ganda',gate:'Manajer & finance menyetujui',out:['chat','Pemohon dikabari lewat WhatsApp'],wa:1},
+      {in:['mic','Rekaman rapat 45 menit'],ai:'AI',act:'Menyusun ringkasan, keputusan, dan tugas per orang',gate:'Cek ringkasan rapat',out:['list','3 tugas terkirim ke peserta'],wa:1},
+      {in:['users','Data siswa & tarif SPP'],ai:'Otomatis',act:'Menerbitkan tagihan dan menjadwalkan pengingat',gate:'Bendahara memantau tunggakan',out:['bell','Pengingat WA ke 6 orang tua'],wa:1},
+      {in:['chat','Pertanyaan orang tua'],ai:'AI',act:'Menjawab dari data PMB dan tagihan resmi',gate:'Staf ambil alih yang sulit',out:['send','Jawaban terkirim, 24 jam'],wa:1},
+      {in:['chart','Data akuntansi bulanan'],ai:'AI',act:'Menyusun laporan dan ringkasan bahasa sehari-hari',gate:'Bendahara meninjau laporan',out:['send','Laporan ke pengurus & donatur'],wa:1}
+    ];
+    const stage=box.querySelector('.aix-stage'),row=box.querySelector('.aix-row'),svgEl=box.querySelector('.aix-svg'),pk=box.querySelector('.aix-pk'),
+      nIn=box.querySelector('.ax-in'),core=box.querySelector('.ax-core'),lbl=box.querySelector('.ax-lbl'),act=box.querySelector('.ax-act'),
+      nGate=box.querySelector('.ax-gate'),nOut=box.querySelector('.ax-out'),btns=[...box.querySelectorAll('.aix-list button')],
+      base=[...svgEl.querySelectorAll('.base path')],prog=[...svgEl.querySelectorAll('.prog path')];
+    const DUR=6200,T={in0:350,in1:1350,ai1:2850,g0:2850,g1:3650,ok:3700,o0:3950,o1:4700};
+    const E=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,C=(v,a,b)=>Math.max(a,Math.min(b,v));
+    let cur=0,t0=performance.now(),vis=true,last=performance.now(),LEN=[0,0,0];
+    function rel(el){const s=stage.getBoundingClientRect(),r=el.getBoundingClientRect();return{l:r.left-s.left,t:r.top-s.top,r:r.right-s.left,b:r.bottom-s.top,cx:r.left-s.left+r.width/2,cy:r.top-s.top+r.height/2};}
+    function geometry(){
+      const w=stage.clientWidth,h=stage.clientHeight;svgEl.setAttribute('viewBox','0 0 '+w+' '+h);
+      const vert=getComputedStyle(row).flexDirection==='column',N=[rel(nIn),rel(core),rel(nGate),rel(nOut)];
+      const CW=vert?rel(box.querySelector('.ax-corew')):null;
+      for(let k=0;k<3;k++){const a=(vert&&k===1)?CW:N[k],b=N[k+1];let d;
+        if(!vert){const x1=a.r,y1=a.cy,x2=b.l,y2=b.cy,m=(x2-x1)/2,o=k%2?28:-28;d='M'+x1+' '+y1+' C'+(x1+m)+' '+(y1+o)+' '+(x2-m)+' '+(y2-o)+' '+x2+' '+y2;}
+        else{const x1=a.cx,y1=a.b,x2=b.cx,y2=b.t,m=(y2-y1)/2,o=k%2?22:-22;d='M'+x1+' '+y1+' C'+(x1+o)+' '+(y1+m)+' '+(x2-o)+' '+(y2-m)+' '+x2+' '+y2;}
+        base[k].setAttribute('d',d);prog[k].setAttribute('d',d);LEN[k]=prog[k].getTotalLength();prog[k].style.strokeDasharray=LEN[k]+' '+LEN[k];}
+    }
+    function apply(i){
+      const s=SC[i];cur=i;t0=performance.now();
+      btns.forEach((b,k)=>{b.classList.toggle('on',k===i);b.setAttribute('aria-selected',String(k===i));b.style.setProperty('--p',0);});
+      nIn.querySelector('.ax-ic').innerHTML=SV(I[s.in[0]]);nIn.querySelector('b').textContent=s.in[1];
+      nGate.querySelector('b').textContent=s.gate;
+      nOut.querySelector('.ax-ic').innerHTML=SV(I[s.out[0]]);nOut.querySelector('b').textContent=s.out[1];nOut.classList.toggle('wa',!!s.wa);
+      [nIn,nGate,nOut].forEach(n=>{n.classList.remove('swap','ok','show','hit');void n.offsetWidth;n.classList.add('swap');});
+      lbl.textContent=s.ai;act.textContent='';core.classList.remove('busy');pk.classList.remove('out');pk.innerHTML=SV(I[s.in[0]]);
+      prog.forEach((p,k)=>p.style.strokeDashoffset=LEN[k]);
+    }
+    function along(k,e){const p=prog[k].getPointAtLength(LEN[k]*e);pk.style.transform='translate('+p.x+'px,'+p.y+'px) translate(-50%,-50%) scale('+(0.9+Math.sin(e*Math.PI)*0.2).toFixed(3)+')';}
+    function frame(now){
+      if(!alive)return;
+      if(!vis){t0+=now-last;last=now;_raf(frame);return;}
+      last=now;let el=now-t0;
+      if(el>DUR){apply((cur+1)%SC.length);el=0;}
+      const s=SC[cur];btns[cur].style.setProperty('--p',C(el/DUR,0,1).toFixed(4));
+      const seg=(a,b)=>C((el-a)/(b-a),0,1);
+      // 1) masuk -> inti AI
+      const a=seg(T.in0,T.in1);prog[0].style.strokeDashoffset=LEN[0]*(1-E(a));
+      nIn.classList.toggle('hit',el>T.in0-250&&el<T.in0+350);
+      // 2) inti memproses
+      const busy=el>=T.in1&&el<T.ai1;core.classList.toggle('busy',busy);
+      if(el>=T.in1){const n=Math.round(s.act.length*C((el-T.in1)/(T.ai1-T.in1-300),0,1));if(act.textContent.length!==n)act.textContent=s.act.slice(0,n);}
+      // 3) inti -> Anda
+      const g=seg(T.g0,T.g1);prog[1].style.strokeDashoffset=LEN[1]*(1-E(g));
+      nGate.classList.toggle('ok',el>=T.ok);
+      // 4) Anda -> hasil
+      const o=seg(T.o0,T.o1);prog[2].style.strokeDashoffset=LEN[2]*(1-E(o));
+      nOut.classList.toggle('show',el>=T.o1);
+      // paket berjalan
+      if(el>=T.in0&&el<T.in1){pk.style.opacity=1;along(0,E(a));}
+      else if(el>=T.g0&&el<T.g1){if(!pk.classList.contains('out')){pk.classList.add('out');pk.innerHTML=SV(I[s.out[0]]);}pk.style.opacity=1;along(1,E(g));}
+      else if(el>=T.o0&&el<T.o1){pk.style.opacity=1;along(2,E(o));}
+      else pk.style.opacity=0;
+      _raf(frame);
+    }
+    btns.forEach((b,i)=>b.addEventListener('click',()=>apply(i)));
+    geometry();apply(0);
+    const ro=new ResizeObserver(()=>{if(alive){geometry();prog.forEach((p,k)=>p.style.strokeDashoffset=LEN[k]);}});ro.observe(stage);
+    const io=new IntersectionObserver(([en])=>{vis=en.isIntersecting;},{threshold:0.15});io.observe(stage);
+    cleanups.push(()=>{ro.disconnect();io.disconnect();});
+    if(document.fonts)document.fonts.ready.then(()=>{if(alive)geometry();});
+    _raf(frame);
+  })();
+
   return()=>{alive=false;timers.forEach(clearTimeout);cleanups.forEach(f=>f());};
 }
