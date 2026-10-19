@@ -542,12 +542,17 @@ export function initHeroMotion(host,{footHost,onCta}={}){
       chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
       bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
       chart:'<path d="M5 20V10M11 20V4M17 20v-7M3 20h18"/>',
-      send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>'
+      send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>',
+      clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+      cam:'<path d="M4 8a2 2 0 0 1 2-2h2l2-2h4l2 2h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/>',
+      face:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0"/>'
     };
     const SC=[
       {in:['pdf','PDF rekening koran'],ai:'AI',act:'Membaca 48 transaksi, mencocokkan, menandai yang janggal',gate:'Periksa 2 transaksi yang ditandai',out:['book','46 jurnal tercatat otomatis']},
       {in:['form','Pengajuan anggaran #128'],ai:'AI',act:'Cek lampiran, plafon, dan pengajuan ganda',gate:'Manajer & finance menyetujui',out:['chat','Pemohon dikabari lewat WhatsApp'],wa:1},
       {in:['mic','Rekaman rapat 45 menit'],ai:'AI',act:'Menyusun ringkasan, keputusan, dan tugas per orang',gate:'Cek ringkasan rapat',out:['list','3 tugas terkirim ke peserta'],wa:1},
+      {in:['clock','Absensi, cuti & lembur'],ai:'Otomatis',act:'Merekap kehadiran, keterlambatan, cuti, dan lembur',gate:'HR menyetujui cuti & lembur',out:['list','Rekap siap untuk penggajian']},
+      {in:['cam','Selfie check-in + lokasi'],ai:'AI',act:'Cek wajah asli (liveness), cocokkan wajah, dan cek lokasi',gate:'Atasan meninjau yang ditolak',out:['face','Check-in sah tercatat']},
       {in:['users','Data siswa & tarif SPP'],ai:'Otomatis',act:'Menerbitkan tagihan dan menjadwalkan pengingat',gate:'Bendahara memantau tunggakan',out:['bell','Pengingat WA ke 6 orang tua'],wa:1},
       {in:['chat','Pertanyaan orang tua'],ai:'AI',act:'Menjawab dari data PMB dan tagihan resmi',gate:'Staf ambil alih yang sulit',out:['send','Jawaban terkirim, 24 jam'],wa:1},
       {in:['chart','Data akuntansi bulanan'],ai:'AI',act:'Menyusun laporan dan ringkasan bahasa sehari-hari',gate:'Bendahara meninjau laporan',out:['send','Laporan ke pengurus & donatur'],wa:1}
