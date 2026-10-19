@@ -865,8 +865,8 @@ fieldset.fl{border:0;margin:0;padding:0}
 /* notulensi */
 .rec{display:inline-flex;align-items:center;gap:5px;font:700 9.5px var(--f-mono);color:var(--red)}
 .rec::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);animation:blinkdot 1.2s infinite}
-.wave{height:40px;display:flex;align-items:center;gap:3px;padding:0 6px;border-radius:10px;background:var(--blush)}
-.wave i{flex:1;height:var(--h);border-radius:3px;background:linear-gradient(var(--coral),var(--red));animation:wv 1.1s ease-in-out infinite alternate;animation-delay:var(--w)}
+.ntwave{height:40px;display:flex;align-items:center;gap:3px;padding:0 6px;border-radius:10px;background:var(--blush)}
+.ntwave i{flex:1;height:var(--h);border-radius:3px;background:linear-gradient(var(--coral),var(--red));animation:wv 1.1s ease-in-out infinite alternate;animation-delay:var(--w)}
 @keyframes wv{to{transform:scaleY(.35)}}
 .sum{padding:9px 10px;border-radius:12px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:3px}
 .sum small{font:700 9px var(--f-mono);color:#ff8a7a;letter-spacing:.04em}
@@ -898,7 +898,7 @@ fieldset.fl{border:0;margin:0;padding:0}
 @keyframes sppoff{0%{opacity:1}72%,100%{opacity:0}}
 .spplist .flip{animation:sppflash 9s ease-out infinite;animation-delay:var(--o);border-radius:6px}
 @keyframes sppflash{0%,70%{background:transparent}74%{background:rgba(31,157,85,.14)}88%,100%{background:transparent}}
-@media (prefers-reduced-motion:reduce){.wave i,.sum p,.tasks div,.spplist .flip,.spplist .flip em,.spplist .flip em *{animation:none!important;opacity:1!important;clip-path:none!important}}
+@media (prefers-reduced-motion:reduce){.ntwave i,.sum p,.tasks div,.spplist .flip,.spplist .flip em,.spplist .flip em *{animation:none!important;opacity:1!important;clip-path:none!important}}
 .sppsum strong{white-space:nowrap;font-size:14px}
 
 /* ===== AI & otomasi: infografis animasi ===== */
@@ -996,24 +996,24 @@ fieldset.fl{border:0;margin:0;padding:0}
 /* ===== contoh karya: Absensi Liveness, Absensi & HR, Log pekerjaan ===== */
 .wk-hr{--o:.4s}.wk-liv{--o:1s}.wk-log{--o:1.6s}
 /* --- liveness: kamera selfie --- */
-.cam{position:relative;height:178px;border-radius:14px;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,#3b2a2e,#1c0b0e 70%)}
-.cam .face{position:absolute;left:50%;bottom:-6px;width:118px;margin-left:-59px;animation:lvturn 9s ease-in-out infinite;animation-delay:var(--o);transform-origin:50% 80%}
+.lvcam{position:relative;height:178px;border-radius:14px;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,#3b2a2e,#1c0b0e 70%)}
+.lvcam .face{position:absolute;left:50%;bottom:-6px;width:118px;margin-left:-59px;animation:lvturn 9s ease-in-out infinite;animation-delay:var(--o);transform-origin:50% 80%}
 @keyframes lvturn{0%,30%{transform:none}36%,48%{transform:translateX(-9px) rotate(-7deg) scaleX(.94)}54%,100%{transform:none}}
-.cam .head{animation:lvblink 9s steps(1) infinite;animation-delay:var(--o)}
+.lvcam .head{animation:lvblink 9s steps(1) infinite;animation-delay:var(--o)}
 @keyframes lvblink{0%,14%,17%,100%{ry:28}15%{ry:27}}
-.cam .lm circle{fill:#ff8a7a;opacity:0;animation:lvlm 9s ease-out infinite;animation-delay:var(--o)}
+.lvcam .lm circle{fill:#ff8a7a;opacity:0;animation:lvlm 9s ease-out infinite;animation-delay:var(--o)}
 @keyframes lvlm{0%,6%{opacity:0}12%,52%{opacity:1}58%,100%{opacity:0}}
-.cam .frame{position:absolute;left:50%;top:6px;width:122px;margin-left:-61px;overflow:visible}
-.cam .frame ellipse{fill:none;stroke:#fff;stroke-width:2.2;stroke-dasharray:6 4;opacity:.85;animation:lvframe 9s steps(1) infinite,lvdash 1.6s linear infinite;animation-delay:var(--o),0s}
+.lvcam .frame{position:absolute;left:50%;top:6px;width:122px;margin-left:-61px;overflow:visible}
+.lvcam .frame ellipse{fill:none;stroke:#fff;stroke-width:2.2;stroke-dasharray:6 4;opacity:.85;animation:lvframe 9s steps(1) infinite,lvdash 1.6s linear infinite;animation-delay:var(--o),0s}
 @keyframes lvdash{to{stroke-dashoffset:-20}}
 @keyframes lvframe{0%{stroke:#fff;stroke-dasharray:6 4}55%,100%{stroke:#36d07a;stroke-dasharray:100 0;stroke-width:3}}
-.cam .scanl{position:absolute;left:24%;right:24%;top:14px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#ff6a52,transparent);box-shadow:0 0 12px 3px rgba(255,106,82,.6);
+.lvcam .scanl{position:absolute;left:24%;right:24%;top:14px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#ff6a52,transparent);box-shadow:0 0 12px 3px rgba(255,106,82,.6);
   animation:lvscan 9s ease-in-out infinite;animation-delay:var(--o)}
 @keyframes lvscan{0%{opacity:0;transform:translateY(0)}4%{opacity:1}26%{transform:translateY(135px)}30%{transform:translateY(0)}50%{opacity:1;transform:translateY(135px)}54%,100%{opacity:0;transform:translateY(135px)}}
-.cam .ins{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);display:grid}
-.cam .ins b{grid-area:1/1;justify-self:center;white-space:nowrap;font:700 10px var(--f-body);color:#fff;background:rgba(0,0,0,.55);padding:5px 10px;border-radius:99px;opacity:0;animation:lvi1 9s steps(1) infinite;animation-delay:var(--o)}
-.cam .ins b:nth-child(2){animation-name:lvi2}
-.cam .ins b.ok{background:#1f9d55;animation-name:lvi3}
+.lvcam .ins{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);display:grid}
+.lvcam .ins b{grid-area:1/1;justify-self:center;white-space:nowrap;font:700 10px var(--f-body);color:#fff;background:rgba(0,0,0,.55);padding:5px 10px;border-radius:99px;opacity:0;animation:lvi1 9s steps(1) infinite;animation-delay:var(--o)}
+.lvcam .ins b:nth-child(2){animation-name:lvi2}
+.lvcam .ins b.ok{background:#1f9d55;animation-name:lvi3}
 @keyframes lvi1{0%{opacity:1}30%,100%{opacity:0}}
 @keyframes lvi2{0%{opacity:0}30%{opacity:1}55%,100%{opacity:0}}
 @keyframes lvi3{0%{opacity:0}55%,100%{opacity:1}}
@@ -1071,10 +1071,10 @@ fieldset.fl{border:0;margin:0;padding:0}
 .rps.rc small{color:var(--red)}.rps.rc p i{background:var(--red)}
 @media (prefers-reduced-motion:reduce){.wk-liv *,.wk-hr .cal i,.wk-hr .leave em,.wk-hr .leave em *,.wk-log .lgw *{animation:none!important}.lg-notes{opacity:0}.lg-rep,.lchk div,.nt{opacity:1}}
 /* penyesuaian: kamera lebih ringkas & laporan lebih padat supaya tidak tertutup toast */
-.cam{height:138px}
-.cam .face{width:96px;margin-left:-48px}
-.cam .frame{width:100px;margin-left:-50px;top:5px}
-.cam .scanl{left:28%;right:28%}
+.lvcam{height:138px}
+.lvcam .face{width:96px;margin-left:-48px}
+.lvcam .frame{width:100px;margin-left:-50px;top:5px}
+.lvcam .scanl{left:28%;right:28%}
 @keyframes lvscan{0%{opacity:0;transform:translateY(0)}4%{opacity:1}26%{transform:translateY(100px)}30%{transform:translateY(0)}50%{opacity:1;transform:translateY(100px)}54%,100%{opacity:0;transform:translateY(100px)}}
 .lchk{gap:4px}.lchk div{padding:5px 8px;font-size:10px}
 .lg-rep{gap:4px}
@@ -1419,7 +1419,7 @@ fieldset.fl{border:0;margin:0;padding:0}
       <figure class="wk rv wk-not" data-cat="kantor yayasan">
         <div class="wstage"><span class="tagc">Contoh tampilan</span><div class="tilt"><div class="dev"><div class="scr" style="height:100%">
           <div class="rowsb"><b class="t">Rapat koordinasi</b><span class="rec">REC 45:12</span></div>
-          <div class="wave"><i style="--h:30%;--w:0.00s"></i><i style="--h:55%;--w:0.07s"></i><i style="--h:80%;--w:0.14s"></i><i style="--h:45%;--w:0.21s"></i><i style="--h:95%;--w:0.28s"></i><i style="--h:60%;--w:0.35s"></i><i style="--h:35%;--w:0.42s"></i><i style="--h:70%;--w:0.49s"></i><i style="--h:90%;--w:0.56s"></i><i style="--h:50%;--w:0.63s"></i><i style="--h:40%;--w:0.70s"></i><i style="--h:75%;--w:0.77s"></i><i style="--h:85%;--w:0.84s"></i><i style="--h:45%;--w:0.91s"></i><i style="--h:65%;--w:0.98s"></i><i style="--h:30%;--w:1.05s"></i><i style="--h:55%;--w:1.12s"></i><i style="--h:80%;--w:1.19s"></i><i style="--h:40%;--w:1.26s"></i><i style="--h:60%;--w:1.33s"></i></div>
+          <div class="ntwave"><i style="--h:30%;--w:0.00s"></i><i style="--h:55%;--w:0.07s"></i><i style="--h:80%;--w:0.14s"></i><i style="--h:45%;--w:0.21s"></i><i style="--h:95%;--w:0.28s"></i><i style="--h:60%;--w:0.35s"></i><i style="--h:35%;--w:0.42s"></i><i style="--h:70%;--w:0.49s"></i><i style="--h:90%;--w:0.56s"></i><i style="--h:50%;--w:0.63s"></i><i style="--h:40%;--w:0.70s"></i><i style="--h:75%;--w:0.77s"></i><i style="--h:85%;--w:0.84s"></i><i style="--h:45%;--w:0.91s"></i><i style="--h:65%;--w:0.98s"></i><i style="--h:30%;--w:1.05s"></i><i style="--h:55%;--w:1.12s"></i><i style="--h:80%;--w:1.19s"></i><i style="--h:40%;--w:1.26s"></i><i style="--h:60%;--w:1.33s"></i></div>
           <div class="sum"><small>✦ Ringkasan AI</small><p>Anggaran Q4 disetujui. Peluncuran aplikasi dimajukan ke 1 Desember.</p></div>
           <div class="tasks"><small>Tugas dari rapat</small>
             <div><i></i><span><b>Rina</b> Revisi RAB Q4</span><em>Jum</em></div>
@@ -1442,7 +1442,7 @@ fieldset.fl{border:0;margin:0;padding:0}
       <figure class="wk rv wk-liv" data-cat="kantor yayasan">
         <div class="wstage"><span class="tagc">Contoh tampilan</span><div class="tilt"><div class="dev"><div class="scr" style="height:100%">
           <div class="rowsb"><b class="t">Check-in</b><small class="mut">Sel, 14 Okt · 07:52</small></div>
-          <div class="cam">
+          <div class="lvcam">
             <svg class="face" viewBox="0 0 100 120" aria-hidden="true"><path d="M14 120c2-20 16-30 36-30s34 10 36 30z" fill="#4a3439"/><ellipse class="head" cx="50" cy="52" rx="23" ry="28" fill="#6b4c52"/>
               <g class="lm"><circle cx="41" cy="49" r="1.6"/><circle cx="59" cy="49" r="1.6"/><circle cx="50" cy="58" r="1.4"/><circle cx="44" cy="66" r="1.3"/><circle cx="56" cy="66" r="1.3"/><circle cx="50" cy="68" r="1.3"/></g></svg>
             <svg class="frame" viewBox="0 0 100 120" aria-hidden="true"><ellipse cx="50" cy="54" rx="30" ry="37" pathLength="100"/></svg>
