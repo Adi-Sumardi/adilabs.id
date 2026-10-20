@@ -1118,9 +1118,29 @@ fieldset.fl{border:0;margin:0;padding:0}
   .copy .htitle{font-size:clamp(15px,1.7vw,24px);line-height:1.25}
   .copy .sub{display:none}
 }
+
+
+/* ===== teks pembuka di dalam area animasi + tanpa garis kartu ===== */
+.stage{border-radius:0!important;box-shadow:none!important;background:transparent!important;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 94%,transparent);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 94%,transparent);mask-composite:intersect}
+@media (min-width:1100px){
+  .hxw{display:grid}
+  .hxw>.hx,.hxw>.stage{grid-area:1/1}
+  .hxw>.hx{position:relative;z-index:5;align-self:start;display:flex;flex-direction:column;gap:14px;max-width:min(560px,46%);margin:clamp(28px,4vw,56px) 0 0 clamp(16px,4vw,52px);pointer-events:none}
+  .hxw>.hx a{pointer-events:auto}
+  .hxw .hx-l,.hxw .hx-r{gap:12px}
+  .hxw .hx h1{font-size:clamp(30px,3.1vw,44px)}
+  .hxw .hx p{font-size:clamp(14.5px,1.1vw,16.5px)}
+  .hxw .hx-cta a{min-height:46px;padding:11px 18px;font-size:14.5px}
+  /* elemen lama di dalam panggung yang bertabrakan dengan teks */
+  .capline,.copy .htitle,.copy .eyebrow,.copy .sub{display:none!important}
+  .notif{left:auto!important;right:clamp(16px,4vw,52px)}
+}
 `,tr=`<div class="sprog" id="sprog"></div><canvas id="pconf"></canvas>
 <div class="wrap">
-<header class="hx">
+<div class="hxw">
+  <header class="hx">
     <div class="hx-l">
       <span class="kick">Aplikasi &amp; otomasi untuk organisasi</span>
       <h1>Aplikasi dan otomasi untuk operasional <em>kantor dan yayasan</em>.</h1>
@@ -1253,6 +1273,7 @@ fieldset.fl{border:0;margin:0;padding:0}
       <h2 class="htitle"><span class="l1">Dari ide jadi aplikasi</span>yang<span class="swapbox" id="box"><span class="swap" id="swap">enak dipakai</span></span></h2>
       <p class="sub" id="sub">Kami merancang tampilan dan prototipe yang bisa diuji sebelum satu baris kode ditulis.</p>
     </div>
+  </div>
   </div>
 
 <div class="mqw" id="mqw"><div class="mq" aria-hidden="true">
