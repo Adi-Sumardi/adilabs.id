@@ -27,6 +27,20 @@ export default function SolutionPage() {
         <p className="sol-status">Status: <b>dikembangkan dan dikonfigurasi sesuai kebutuhan</b> organisasi Anda. Contoh tampilan memakai data contoh.</p>
       </section>
 
+      {s.liveDemo && (
+        <section className="sol-demo" aria-labelledby="demo-h">
+          <div>
+            <span className="sol-kick">Aplikasi demo</span>
+            <h2 id="demo-h">Coba langsung: {s.liveDemo.name}</h2>
+            <p>{s.liveDemo.name} adalah aplikasi pengajuan &amp; persetujuan anggaran yang sudah berjalan, berisi <b>data demo</b> khusus untuk calon klien. Minta akun demo lewat WhatsApp, lalu masuk di <b>{s.liveDemo.url.replace('https://', '')}</b>.</p>
+          </div>
+          <div className="sol-demo-cta">
+            <a className="sol-btn" href={s.liveDemo.waUrl} target="_blank" rel="noreferrer" data-track="demo_request_click" data-loc={`solusi-${s.slug}`}>Minta akun demo via WhatsApp</a>
+            <a className="sol-btn sol-btn-ghost" href={s.liveDemo.url} target="_blank" rel="noopener" data-track="demo_click" data-loc={`solusi-${s.slug}`} data-kind="aplikasi">Buka {s.liveDemo.name} ↗</a>
+          </div>
+        </section>
+      )}
+
       <section className="sol-sec">
         <h2>Untuk siapa</h2>
         <div className="sol-grid3">
