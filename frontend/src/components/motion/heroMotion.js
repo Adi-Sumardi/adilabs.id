@@ -26,10 +26,17 @@ export function initHeroMotion(host,{footHost,onCta}={}){
   const onLink=e=>{
     const a=e.composedPath().find(n=>n.tagName==='A'&&(n.getAttribute('href')||'').startsWith('#'));if(!a)return;
     const id=a.getAttribute('href').slice(1);if(!id||document.getElementById(id))return;
-    const el=gid(id);if(!el)return;e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+id);
+    const el=gid(id);if(!el)return;e.preventDefault();goTo(el,'smooth');history.replaceState(null,'','#'+id);
   };
   document.addEventListener('click',onLink);cleanups.push(()=>document.removeEventListener('click',onLink));
-  if(location.hash){const el=gid(location.hash.slice(1));if(el)tset(()=>el.scrollIntoView({block:'start'}),300);}
+  // kartu contoh karya: pastikan filter "Semua" aktif, gulir ke tengah, lalu sorot sebentar
+  function goTo(el,behavior){
+    if(el.classList.contains('wk')){
+      const all=root.querySelector('.wfilter button[data-f="all"]');if(el.hidden&&all)all.click();
+      el.scrollIntoView({behavior,block:'center'});el.classList.remove('target-hl');void el.offsetWidth;el.classList.add('target-hl');
+    }else el.scrollIntoView({behavior,block:'start'});
+  }
+  if(location.hash){const el=gid(location.hash.slice(1));if(el)tset(()=>goTo(el,'auto'),500);}
 
   /* ================= hero ================= */
   {

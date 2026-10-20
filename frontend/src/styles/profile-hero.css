@@ -814,3 +814,21 @@
     font-size: clamp(14px, 1.05vw, 16px);
   }
 }
+
+
+/* Menu Solusi: tiga pilihan kebutuhan (audit marketing 20 Okt) */
+.nav-has-menu { position: relative; }
+.nav-has-menu > a span { font-size: 10px; margin-left: 2px; }
+.nav-menu { position: absolute; top: calc(100% + 10px); left: 50%; transform: translate(-50%, 6px); min-width: 280px; padding: 8px; border-radius: 16px; background: #fff;
+  border: 1px solid #f3d6d4; box-shadow: 0 24px 48px -24px rgba(155, 10, 29, .45); display: flex; flex-direction: column; gap: 2px;
+  opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; z-index: 120; }
+.nav-has-menu::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px; }
+.nav-has-menu:hover .nav-menu, .nav-has-menu:focus-within .nav-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-menu a { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; text-decoration: none; }
+.nav-menu a::after { display: none !important; }
+.nav-menu a b { font-size: 14.5px; color: #1c0b0e; font-weight: 700; }
+.nav-menu a span { font-size: 12.5px; color: #7d5b60; }
+.nav-menu a:hover, .nav-menu a:focus-visible { background: #fff3f2; }
+.nav-menu a:hover b { color: #e3122b; }
+.mobile-menu-label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #7d5b60; margin-top: 4px; }
+.profile-mobile-menu .mobile-sub { padding-left: 14px; font-size: .95em; }

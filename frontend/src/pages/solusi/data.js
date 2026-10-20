@@ -2,6 +2,7 @@
 export const SOLUTIONS = {
   "tagihan-spp": {
     "slug": "tagihan-spp",
+    "demoId": "karya-spp",
     "wa": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20membahas%20tagihan%20SPP%20dan%20pengingat%20WhatsApp%20untuk%20%5Bnama%20instansi%5D.%20Proses%20yang%20ingin%20kami%20rapikan%3A%20%5Bmasalah%20utama%5D.%20Saat%20ini%20kami%20memakai%20%5Bcara/sistem%20saat%20ini%5D.%20Apakah%20bisa%20dijadwalkan%20diskusi%20kebutuhan%3F",
     "title": "Aplikasi Tagihan SPP & Pengingat WhatsApp untuk Sekolah dan Yayasan | AdiLabs",
     "desc": "Tagihan SPP terbit otomatis, pengingat lewat WhatsApp, dan rekap tunggakan untuk bendahara. Dikembangkan sesuai alur keuangan sekolah dan yayasan Anda.",
@@ -89,6 +90,7 @@ export const SOLUTIONS = {
   },
   "approval-anggaran": {
     "slug": "approval-anggaran",
+    "demoId": "karya-approval",
     "wa": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20membahas%20pengajuan%20dan%20persetujuan%20anggaran%20untuk%20%5Bnama%20instansi%5D.%20Proses%20yang%20ingin%20kami%20rapikan%3A%20%5Bmasalah%20utama%5D.%20Saat%20ini%20kami%20memakai%20%5Bcara/sistem%20saat%20ini%5D.%20Apakah%20bisa%20dijadwalkan%20diskusi%20kebutuhan%3F",
     "title": "Aplikasi Pengajuan & Persetujuan Anggaran untuk Kantor dan Yayasan | AdiLabs",
     "desc": "Pengajuan anggaran dicek kelengkapannya, disetujui berjenjang, dan setiap tahap dikabarkan lewat WhatsApp & email. Dikembangkan sesuai alur persetujuan organisasi Anda.",

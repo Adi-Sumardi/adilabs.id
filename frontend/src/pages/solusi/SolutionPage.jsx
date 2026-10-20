@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import PageShell, { usePageMeta } from '../../components/PageShell';
 import NotFound from '../NotFound';
 import { SOLUTIONS } from './data';
+import CostBreakdown from '../../components/CostBreakdown';
+import '../../styles/sections.css';
 
 const STEPS = ['Diskusi kebutuhan', 'Rancangan alur & cakupan', 'Penawaran tertulis (biaya & jadwal)', 'Pengembangan & uji coba', 'Pelatihan & mulai dipakai'];
 
@@ -19,10 +21,10 @@ export default function SolutionPage() {
         <h1>{s.h1}</h1>
         <p className="sol-lead">{s.lead}</p>
         <div className="sol-cta">
-          <a className="sol-btn" href={s.wa} target="_blank" rel="noreferrer" data-track="whatsapp_click" data-loc={`solusi-${s.slug}`}>Diskusikan Kebutuhan via WhatsApp</a>
-          <a className="sol-btn sol-btn-ghost" href="/#karya" data-track="demo_click" data-loc={`solusi-${s.slug}`}>Lihat demo “{s.demo}”</a>
+          <a className="sol-btn" href={s.wa} target="_blank" rel="noreferrer" data-track="whatsapp_click" data-loc={`solusi-${s.slug}`}>Diskusikan Kebutuhan</a>
+          <a className="sol-btn sol-btn-ghost" href={`/#${s.demoId}`} data-track="demo_click" data-loc={`solusi-${s.slug}`} data-kind="ilustrasi">Lihat contoh tampilan</a>
         </div>
-        <p className="sol-status">Status: <b>dikembangkan dan dikonfigurasi sesuai kebutuhan</b> organisasi Anda. Tampilan di beranda adalah demo dengan data contoh.</p>
+        <p className="sol-status">Status: <b>dikembangkan dan dikonfigurasi sesuai kebutuhan</b> organisasi Anda. Contoh tampilan memakai data contoh.</p>
       </section>
 
       <section className="sol-sec">
@@ -69,6 +71,11 @@ export default function SolutionPage() {
           <h2>Dukungan</h2>
           <p className="sol-p">Pelatihan untuk admin dan pengguna, perbaikan bug, serta penyesuaian kecil selama masa dukungan yang disepakati di penawaran. Bantuan dilakukan lewat WhatsApp.</p>
         </div>
+      </section>
+
+      <section className="sol-sec">
+        <h2>Komponen biaya</h2>
+        <CostBreakdown className="cost-in-page" />
       </section>
 
       <section className="sol-sec">

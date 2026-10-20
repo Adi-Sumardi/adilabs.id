@@ -1,3 +1,6 @@
+Options -Indexes
+DirectorySlash Off
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -13,6 +16,9 @@
   RewriteCond %{REQUEST_URI} \.(js|css|png|jpg|jpeg|gif|ico|svg|json|woff2?|ttf|eot)$ [NC]
   RewriteRule ^ - [L]
 
+  # /solusi (folder) tidak punya halaman sendiri: arahkan ke pilihan kebutuhan di beranda
+  RewriteRule ^solusi/?$ /#kebutuhan [R=301,NE,L]
+
   # Never rewrite /api/ requests — handled by api/*.php directly
   RewriteRule ^api/ - [L]
 
@@ -24,7 +30,10 @@
 
   # Only real React Router routes get the SPA shell with HTTP 200.
   # Keep this list in sync with frontend/src/App.jsx.
-  RewriteRule ^(login|dashboard(/.*)?|produk/[^/]+|blog/[^/]+|solusi/(tagihan-spp|approval-anggaran)|kebijakan-privasi)/?$ index.html [L]
+  # Halaman dengan HTML + metadata sendiri (dibuat scripts/prerender-meta.mjs saat build)
+  RewriteRule ^solusi/(tagihan-spp|approval-anggaran)/?$ solusi/$1.html [L]
+  RewriteRule ^kebijakan-privasi/?$ kebijakan-privasi.html [L]
+  RewriteRule ^(login|dashboard(/.*)?|produk/[^/]+|blog/[^/]+)/?$ index.html [L]
 </IfModule>
 
 # Any other URL is a real 404: Apache answers with status 404 but serves the SPA shell,

@@ -1133,3 +1133,35 @@ fieldset.fl{border:0;margin:0;padding:0}
 @media (min-width:1100px){
   .viz{transform-origin:100% 50%!important;scale:var(--vz,.78)}
 }
+
+
+/* ===== audit marketing 20 Okt: catatan CTA & kartu "Pilih kebutuhan" ===== */
+.hx-note{display:block;max-width:52ch;color:var(--muted);font-size:13.5px;line-height:1.5}
+.ndw{padding-top:clamp(40px,6vw,72px)}
+.ndg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ndc{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px 22px 20px;border-radius:22px;border:1px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;
+  transition:transform .4s cubic-bezier(.2,1.3,.4,1),box-shadow .4s,border-color .4s;overflow:hidden}
+.ndc::before{content:"";position:absolute;right:-70px;top:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,82,.16),transparent 70%);pointer-events:none}
+.ndc:hover{transform:translateY(-6px);border-color:#f0b3ad;box-shadow:0 26px 44px -26px rgba(155,10,29,.45)}
+.ndc:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.ndc-tag{align-self:flex-start;font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);background:var(--blush);padding:5px 9px;border-radius:99px}
+.ndc h3{margin:2px 0 0;font:600 20px/1.25 var(--f-display);letter-spacing:-.015em}
+.ndc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+.ndc ul{margin:2px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.ndc li{position:relative;padding-left:22px;font-size:13.5px;color:#4a3236}
+.ndc li::before{content:"✓";position:absolute;left:3px;color:#1f9d55;font-weight:700}
+.ndc-go{margin-top:auto;padding-top:8px;display:inline-flex;align-items:center;gap:8px;font:700 14.5px var(--f-body);color:var(--red)}
+.ndc-go svg{width:17px;height:17px;stroke:currentColor;transition:transform .3s}
+.ndc:hover .ndc-go svg{transform:translateX(4px)}
+.ndc-spp,.ndc-apr{border-color:#f0c4c1;background:linear-gradient(180deg,#fff7f6,#fff 55%)}
+@media (max-width:900px){.ndg{grid-template-columns:1fr}}
+/* kartu yang dituju langsung dari halaman solusi (#karya-spp / #karya-approval) */
+.wk.target-hl .wstage{animation:tghl 2.4s ease-out 1}
+@keyframes tghl{0%,40%{box-shadow:0 0 0 4px var(--red),0 30px 50px -24px rgba(227,18,43,.6)}100%{box-shadow:none}}
+.wk[id]{scroll-margin-top:96px}
+/* headline audit lebih panjang: kecilkan di desktop supaya teks + catatan CTA tidak menyentuh maskot */
+@media (min-width:1100px){
+  .hxw>.hx{max-width:min(600px,48%)}
+  .hxw .hx h1{font-size:clamp(28px,2.6vw,40px);line-height:1.1}
+  .hxw .hx-note{font-size:13px}
+}

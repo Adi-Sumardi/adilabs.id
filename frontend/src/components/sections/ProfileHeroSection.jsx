@@ -38,7 +38,14 @@ export default function ProfileHeroSection() {
 
           <ul className="profile-nav-links desktop-only">
             <li><a href="#" className="active">Beranda</a></li>
-            <li><a href="#layanan">Solusi</a></li>
+            <li className="nav-has-menu">
+              <a href="#kebutuhan" aria-haspopup="true">Solusi <span aria-hidden="true">▾</span></a>
+              <div className="nav-menu" role="menu">
+                <a role="menuitem" href="/solusi/tagihan-spp" data-track="solution_click" data-loc="nav"><b>Sekolah &amp; Yayasan</b><span>Tagihan SPP &amp; pengingat WhatsApp</span></a>
+                <a role="menuitem" href="/solusi/approval-anggaran" data-track="solution_click" data-loc="nav"><b>Kantor &amp; Finance</b><span>Pengajuan &amp; persetujuan anggaran</span></a>
+                <a role="menuitem" href="#layanan"><b>Pengembangan Custom</b><span>Aplikasi sesuai alur kerja Anda</span></a>
+              </div>
+            </li>
             <li><a href="#proses">Cara Kerja</a></li>
             <li><a href="#tentang">Tentang AdiLabs</a></li>
           </ul>
@@ -63,7 +70,10 @@ export default function ProfileHeroSection() {
         {mobileMenuOpen && (
           <div className="profile-mobile-menu mobile-only">
             <a href="#" onClick={() => setMobileMenuOpen(false)}>Beranda</a>
-            <a href="#layanan" onClick={() => setMobileMenuOpen(false)}>Solusi</a>
+            <span className="mobile-menu-label">Solusi</span>
+            <a className="mobile-sub" href="/solusi/tagihan-spp" data-track="solution_click" data-loc="nav-mobile">Sekolah &amp; Yayasan · SPP</a>
+            <a className="mobile-sub" href="/solusi/approval-anggaran" data-track="solution_click" data-loc="nav-mobile">Kantor &amp; Finance · Approval</a>
+            <a className="mobile-sub" href="#layanan" onClick={() => setMobileMenuOpen(false)}>Pengembangan Custom</a>
             <a href="#proses" onClick={() => setMobileMenuOpen(false)}>Cara Kerja</a>
             <a href="#tentang" onClick={() => setMobileMenuOpen(false)}>Tentang AdiLabs</a>
             <a href="#kontak" onClick={() => setMobileMenuOpen(false)} style={{ color: '#e63946', fontWeight: 700 }}>Kontak</a>

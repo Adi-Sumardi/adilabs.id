@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import CostBreakdown from '../CostBreakdown';
 
 const WA_URL = 'https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20membahas%20aplikasi%20untuk%20%5Bnama%20instansi%5D.%20Proses%20yang%20ingin%20kami%20rapikan%3A%20%5Bmasalah%20utama%5D.%20Saat%20ini%20kami%20memakai%20%5Bcara/sistem%20saat%20ini%5D.%20Apakah%20bisa%20dijadwalkan%20diskusi%20kebutuhan%3F';
 
@@ -24,7 +25,7 @@ export default function ContactSection() {
       <p>Ceritakan proses di kantor atau yayasan Anda yang ingin dirapikan. Kami bahas kebutuhannya dulu, baru menyusun solusi yang sesuai.</p>
 
       <div className="contact-row">
-        <a href={WA_URL} target="_blank" rel="noreferrer" className="btn btn-primary" data-track="whatsapp_click" data-loc="kontak">Diskusikan via WhatsApp</a>
+        <a href={WA_URL} target="_blank" rel="noreferrer" className="btn btn-primary" data-track="whatsapp_click" data-loc="kontak">Diskusikan Kebutuhan</a>
         <a href="mailto:adisumardi888@gmail.com" className="btn btn-outline" data-track="email_click" data-loc="kontak">Email Kami</a>
       </div>
 
@@ -36,6 +37,7 @@ export default function ContactSection() {
           </div>
         ))}
       </div>
+      <CostBreakdown />
       <p className="terms-note">
         Setiap solusi dikembangkan dan dikonfigurasi sesuai alur kerja organisasi Anda. Baca juga <Link to="/kebijakan-privasi">Kebijakan Privasi</Link>.
       </p>

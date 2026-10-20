@@ -56,3 +56,4 @@
 .sol-foot a{color:var(--ink);text-decoration:none;font-weight:600}.sol-foot a:hover{color:var(--red)}
 @media (max-width:900px){.sol-flow{grid-template-columns:1fr 1fr}.sol-grid3{grid-template-columns:1fr}.sol-split{grid-template-columns:1fr}}
 @media (max-width:620px){.sol-nav{display:none}.sol-top .sol-btn-sm{margin-left:auto}.sol-flow{grid-template-columns:1fr}.sol-cta .sol-btn{width:100%}}
+.sol-page .cost-in-page { margin: 0; max-width: none; }
