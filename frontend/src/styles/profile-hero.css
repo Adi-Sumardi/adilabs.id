@@ -795,12 +795,22 @@
   }
 }
 
-/* Judul kanan "PENDIRI & PENANGGUNG JAWAB" lebih panjang dari judul lama: kecilkan sedikit di desktop supaya pas 2 baris */
+/* Desktop: kolom dikunci (minmax 0) supaya teks panjang tidak menggeser foto dari tengah,
+   dan judul dikecilkan supaya tidak terlalu dominan */
 @media (min-width: 992px) {
+  .hero-content-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr);
+  }
+  .hero-heading-left .hero-huge-title {
+    font-size: clamp(3rem, 4.6vw, 4.6rem);
+  }
   .hero-heading-right .hero-huge-title {
-    font-size: clamp(3rem, 4.9vw, 5.4rem);
+    font-size: clamp(2.2rem, 3.3vw, 3.3rem);
   }
   .hero-heading-right .hero-huge-title .title-row {
     white-space: nowrap;
+  }
+  .hero-bio-summary {
+    font-size: clamp(14px, 1.05vw, 16px);
   }
 }
