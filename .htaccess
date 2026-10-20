@@ -24,7 +24,7 @@
 
   # Only real React Router routes get the SPA shell with HTTP 200.
   # Keep this list in sync with frontend/src/App.jsx.
-  RewriteRule ^(login|dashboard(/.*)?|produk/[^/]+|blog/[^/]+)/?$ index.html [L]
+  RewriteRule ^(login|dashboard(/.*)?|produk/[^/]+|blog/[^/]+|solusi/(tagihan-spp|approval-anggaran)|kebijakan-privasi)/?$ index.html [L]
 </IfModule>
 
 # Any other URL is a real 404: Apache answers with status 404 but serves the SPA shell,

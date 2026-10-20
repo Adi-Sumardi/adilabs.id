@@ -13,6 +13,8 @@ import MarqueePanel from './pages/MarqueePanel';
 import HeroTextPanel from './pages/HeroTextPanel';
 import ChangePasswordPanel from './pages/ChangePasswordPanel';
 import NotFound from './pages/NotFound';
+import SolutionPage from './pages/solusi/SolutionPage';
+import PrivacyPage from './pages/PrivacyPage';
 import RouteMeta from './components/RouteMeta';
 
 export default function App() {
@@ -24,6 +26,8 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/produk/:id" element={<ProductDetail />} />
           <Route path="/blog/:slug" element={<ArticleDetail />} />
+          <Route path="/solusi/:slug" element={<SolutionPage />} />
+          <Route path="/kebijakan-privasi" element={<PrivacyPage />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/dashboard"

@@ -1090,3 +1090,8 @@ fieldset.fl{border:0;margin:0;padding:0}
   /* judul di dalam panggung animasi disembunyikan di HP supaya tidak bertumpuk dengan ilustrasi */
   .copy .htitle,.copy .eyebrow{display:none}
 }
+
+/* tautan ke halaman solusi dari kartu contoh karya */
+.wk figcaption .wk-sol{align-self:flex-start;margin-top:2px;font:700 14px var(--f-body);color:var(--red);text-decoration:none}
+.wk figcaption .wk-sol:hover{text-decoration:underline}
+.wk figcaption .wk-sol:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}

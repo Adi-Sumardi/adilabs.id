@@ -101,13 +101,13 @@ export default function ProfileHeroSection() {
 
             <div className="hero-stats-capsule">
               <div className="stat-box">
-                <span className="stat-number">5+</span>
-                <span className="stat-label">Years Experience</span>
+                <span className="stat-number">9</span>
+                <span className="stat-label">Contoh Solusi</span>
               </div>
               <div className="stat-line" />
               <div className="stat-box">
-                <span className="stat-number">20+</span>
-                <span className="stat-label">Active Products</span>
+                <span className="stat-number">Online</span>
+                <span className="stat-label">Seluruh Indonesia</span>
               </div>
             </div>
 
