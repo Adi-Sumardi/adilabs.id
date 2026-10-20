@@ -1105,15 +1105,32 @@ fieldset.fl{border:0;margin:0;padding:0}
 .wk figcaption .wk-sol{align-self:flex-start;margin-top:2px;font:700 14px var(--f-body);color:var(--red);text-decoration:none}
 .wk figcaption .wk-sol:hover{text-decoration:underline}
 .wk figcaption .wk-sol:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+
+
+/* ===== pembuka 2 kolom di desktop supaya kartu animasi ikut terlihat tanpa scroll ===== */
+.hx-l,.hx-r{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (min-width:900px){
+  .hx{max-width:none;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end;margin-bottom:22px}
+  .hx h1{font-size:clamp(30px,3.3vw,46px)}
+  .hx p{font-size:clamp(15px,1.15vw,17px)}
+  /* judul di dalam kartu animasi jadi keterangan kecil (animasi pergantian kata tetap jalan) */
+  .copy{gap:8px}
+  .copy .htitle{font-size:clamp(15px,1.7vw,24px);line-height:1.25}
+  .copy .sub{display:none}
+}
 `,tr=`<div class="sprog" id="sprog"></div><canvas id="pconf"></canvas>
 <div class="wrap">
 <header class="hx">
-    <span class="kick">Aplikasi &amp; otomasi untuk organisasi</span>
-    <h1>Aplikasi dan otomasi untuk operasional <em>kantor dan yayasan</em>.</h1>
-    <p>AdiLabs membantu merancang aplikasi sesuai alur kerja Anda—mulai dari administrasi sekolah dan pengajuan anggaran hingga pelaporan. Ceritakan proses yang ingin dirapikan untuk membahas solusi yang sesuai.</p>
-    <div class="hx-cta">
+    <div class="hx-l">
+      <span class="kick">Aplikasi &amp; otomasi untuk organisasi</span>
+      <h1>Aplikasi dan otomasi untuk operasional <em>kantor dan yayasan</em>.</h1>
+    </div>
+    <div class="hx-r">
+      <p>AdiLabs membantu merancang aplikasi sesuai alur kerja Anda—mulai dari administrasi sekolah dan pengajuan anggaran hingga pelaporan. Ceritakan proses yang ingin dirapikan untuk membahas solusi yang sesuai.</p>
+      <div class="hx-cta">
       <a class="hx-wa" href="https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20membahas%20aplikasi%20untuk%20%5Bnama%20instansi%5D.%20Proses%20yang%20ingin%20kami%20rapikan%3A%20%5Bmasalah%20utama%5D.%20Saat%20ini%20kami%20memakai%20%5Bcara/sistem%20saat%20ini%5D.%20Apakah%20bisa%20dijadwalkan%20diskusi%20kebutuhan%3F" target="_blank" rel="noopener" data-track="whatsapp_click" data-loc="hero"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Diskusikan Kebutuhan via WhatsApp</a>
       <a class="hx-2" href="#karya" data-track="demo_click" data-loc="hero">Lihat Contoh Solusi</a>
+    </div>
     </div>
   </header>
   <div class="stage" id="stage">
