@@ -82,11 +82,6 @@ export default function ProfileHeroSection() {
         />
         <div className="hero-sunbeam-aura" />
 
-        {/* Teks pembuka bergaya tulisan tangan */}
-        <div className="hero-script-container">
-          <span className="hero-script-text">Di balik AdiLabs</span>
-        </div>
-
         {/* 3-Column Visual Presentation */}
         <div className="hero-content-grid">
           
