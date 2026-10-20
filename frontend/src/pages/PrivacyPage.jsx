@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         <h2>Data yang kami terima</h2>
         <ul className="sol-list">
           <li><b>Data yang Anda kirim sendiri</b> saat menghubungi kami lewat WhatsApp atau email, misalnya nama, nama instansi, nomor kontak, dan gambaran kebutuhan.</li>
-          <li><b>Data teknis kunjungan</b> seperti halaman yang dibuka dan tombol yang diklik, bila layanan analitik diaktifkan. Data ini tidak mencakup isi pesan Anda.</li>
+          <li><b>Data teknis kunjungan</b> lewat Google Analytics, seperti halaman yang dibuka, tombol yang diklik, jenis perangkat, dan perkiraan lokasi (kota/negara). Data ini tidak mencakup isi pesan Anda dan tidak kami pakai untuk mengenali Anda secara pribadi.</li>
         </ul>
 
         <h2>Cara kami memakainya</h2>
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         <p className="sol-p">Kami tidak menjual data Anda dan tidak membagikannya kepada pihak lain untuk kepentingan pemasaran mereka.</p>
 
         <h2>Layanan pihak ketiga</h2>
-        <p className="sol-p">Percakapan lewat WhatsApp dan email diproses oleh penyedia layanan tersebut sesuai kebijakan privasi masing-masing. Bila analitik diaktifkan, data kunjungan diproses oleh penyedia analitik yang kami gunakan.</p>
+        <p className="sol-p">Percakapan lewat WhatsApp dan email diproses oleh penyedia layanan tersebut sesuai kebijakan privasi masing-masing. Data kunjungan diproses oleh Google Analytics sesuai kebijakan privasi Google. Anda dapat menolak pelacakan ini dengan pengaturan cookie di browser atau ekstensi pemblokir analitik.</p>
 
         <h2>Data dalam proyek aplikasi</h2>
         <p className="sol-p">Data organisasi yang diolah di dalam aplikasi yang kami kembangkan (misalnya data siswa, karyawan, atau keuangan) diatur dalam penawaran atau perjanjian kerja sama dengan masing-masing klien, termasuk lokasi penyimpanan dan hak aksesnya.</p>

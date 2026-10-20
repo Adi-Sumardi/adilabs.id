@@ -1,6 +1,6 @@
 // Pelacakan klik CTA (audit P0/ukuran keberhasilan): whatsapp_click, email_click, demo_click.
 // Elemen cukup diberi data-track="nama_event" (opsional data-loc="lokasi").
-// Tidak mengirim apa pun sampai GA4/GTM dipasang; tidak mengirim isi pesan atau data pribadi.
+// Dikirim ke GA4 (G-EQE6D6DT4D, dipasang di index.html); tidak mengirim isi pesan atau data pribadi.
 export function initClickTracking() {
   document.addEventListener('click', (e) => {
     const el = e.composedPath().find((n) => n instanceof Element && n.hasAttribute('data-track'));
