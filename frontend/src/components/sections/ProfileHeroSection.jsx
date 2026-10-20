@@ -82,9 +82,9 @@ export default function ProfileHeroSection() {
         />
         <div className="hero-sunbeam-aura" />
 
-        {/* Top Script Text "Hey, there" */}
+        {/* Teks pembuka bergaya tulisan tangan */}
         <div className="hero-script-container">
-          <span className="hero-script-text">Hey, there</span>
+          <span className="hero-script-text">Di balik AdiLabs</span>
         </div>
 
         {/* 3-Column Visual Presentation */}
@@ -93,7 +93,7 @@ export default function ProfileHeroSection() {
           {/* Left Column */}
           <div className="hero-column hero-col-left">
             <div className="hero-heading-block hero-heading-left">
-              <span className="hero-intro-prefix">I am</span>
+              <span className="hero-intro-prefix">Kenalan dengan</span>
               <h2 className="hero-huge-title">
                 <span className="title-row title-highlight">ADI SUMARDI</span>
               </h2>
@@ -117,14 +117,14 @@ export default function ProfileHeroSection() {
               target="_blank"
               rel="noreferrer"
               className="hero-linkedin-btn"
-              title="Connect on LinkedIn"
+              title="Lihat profil Adi Sumardi di LinkedIn"
             >
               <div className="linkedin-icon-box">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </div>
-              <span className="linkedin-btn-text">Connect on LinkedIn</span>
+              <span className="linkedin-btn-text">Lihat profil LinkedIn</span>
               <svg className="linkedin-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
@@ -142,7 +142,7 @@ export default function ProfileHeroSection() {
             >
               <img 
                 src="/adi.png" 
-                alt="Adi Sumardi - Software Developer & Architect" 
+                alt="Adi Sumardi, pendiri dan penanggung jawab AdiLabs" 
                 className="hero-portrait-image"
               />
               <div className="portrait-feather-overlay" />
@@ -152,35 +152,35 @@ export default function ProfileHeroSection() {
           {/* Right Column */}
           <div className="hero-column hero-col-right">
             <p className="hero-bio-summary">
-              Specialized in Full-Stack Web & Mobile Apps, AI Integrations, and Scalable Cloud Architecture.
+              Sebagai pendiri, saya menjadi kontak utama Anda di setiap proyek AdiLabs: dari diskusi kebutuhan dan rancangan alur, pengembangan, sampai pendampingan setelah aplikasi dipakai.
             </p>
 
             <div className="hero-heading-block hero-heading-right">
               <h2 className="hero-huge-title">
-                <span className="title-row">SOFTWARE</span>
-                <span className="title-row title-role-accent">DEVELOPER</span>
+                <span className="title-row">PENDIRI &amp;</span>
+                <span className="title-row title-role-accent">PENANGGUNG JAWAB</span>
               </h2>
             </div>
 
             <div className="hero-skills-row">
-              <span className="skill-chip">Full-Stack</span>
-              <span className="skill-chip">Web & Mobile</span>
-              <span className="skill-chip">AI Integrations</span>
-              <span className="skill-chip">Cloud Architecture</span>
+              <span className="skill-chip">Diskusi kebutuhan</span>
+              <span className="skill-chip">Rancangan alur</span>
+              <span className="skill-chip">Pengembangan web &amp; mobile</span>
+              <span className="skill-chip">Pendampingan</span>
             </div>
           </div>
 
         </div>
 
         {/* Scroll down trigger */}
-        <a href="#kontak" className="hero-scroll-indicator" aria-label="Scroll to contact">
+        <a href="#kontak" className="hero-scroll-indicator" aria-label="Gulir ke bagian kontak">
           <div className="scroll-arrow-circle">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <polyline points="19 12 12 19 5 12"></polyline>
             </svg>
           </div>
-          <span className="scroll-caption">GET IN TOUCH</span>
+          <span className="scroll-caption">HUBUNGI SAYA</span>
         </a>
       </div>
     </header>

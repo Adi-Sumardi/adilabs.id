@@ -680,7 +680,7 @@
     letter-spacing: -0.01em;
   }
 
-  /* 3. Right Heading "SOFTWARE DEVELOPER" */
+  /* 3. Right Heading "PENDIRI & PENANGGUNG JAWAB" */
   .hero-heading-right {
     order: 3;
     text-align: center;
@@ -792,5 +792,15 @@
   .hero-stats-capsule {
     padding: 10px 18px;
     gap: 14px;
+  }
+}
+
+/* Judul kanan "PENDIRI & PENANGGUNG JAWAB" lebih panjang dari judul lama: kecilkan sedikit di desktop supaya pas 2 baris */
+@media (min-width: 992px) {
+  .hero-heading-right .hero-huge-title {
+    font-size: clamp(3rem, 4.9vw, 5.4rem);
+  }
+  .hero-heading-right .hero-huge-title .title-row {
+    white-space: nowrap;
   }
 }
