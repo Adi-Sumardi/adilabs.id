@@ -22,9 +22,14 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Everything else is a React Router client-side route — serve the SPA shell
-  RewriteRule ^ index.html [L]
+  # Only real React Router routes get the SPA shell with HTTP 200.
+  # Keep this list in sync with frontend/src/App.jsx.
+  RewriteRule ^(login|dashboard(/.*)?|produk/[^/]+|blog/[^/]+)/?$ index.html [L]
 </IfModule>
+
+# Any other URL is a real 404: Apache answers with status 404 but serves the SPA shell,
+# so React renders the "Halaman tidak ditemukan" page (marked noindex).
+ErrorDocument 404 /index.html
 
 # Correct MIME types
 <IfModule mod_mime.c>

@@ -28,7 +28,7 @@ export default function ProfileHeroSection() {
   };
 
   return (
-    <header className="profile-hero-wrapper" ref={heroRef} onMouseMove={handleMouseMove}>
+    <header id="tentang" className="profile-hero-wrapper" ref={heroRef} onMouseMove={handleMouseMove}>
       {/* Navigation Header matching Madison reference */}
       <nav className={`profile-nav ${scrolled ? 'nav-scrolled' : ''}`}>
         <div className="profile-nav-container">
@@ -37,12 +37,14 @@ export default function ProfileHeroSection() {
           </a>
 
           <ul className="profile-nav-links desktop-only">
-            <li><a href="#" className="active">Home</a></li>
-            <li><a href="#layanan">Services</a></li>
+            <li><a href="#" className="active">Beranda</a></li>
+            <li><a href="#layanan">Solusi</a></li>
+            <li><a href="#proses">Cara Kerja</a></li>
+            <li><a href="#tentang">Tentang AdiLabs</a></li>
           </ul>
 
           <div className="nav-action-wrap desktop-only">
-            <a href="#kontak" className="btn-nav-contact">Contact</a>
+            <a href="#kontak" className="btn-nav-contact">Kontak</a>
           </div>
 
           <button 
@@ -60,9 +62,11 @@ export default function ProfileHeroSection() {
 
         {mobileMenuOpen && (
           <div className="profile-mobile-menu mobile-only">
-            <a href="#" onClick={() => setMobileMenuOpen(false)}>Home</a>
-            <a href="#layanan" onClick={() => setMobileMenuOpen(false)}>Services</a>
-            <a href="#kontak" onClick={() => setMobileMenuOpen(false)} style={{ color: '#e63946', fontWeight: 700 }}>Contact</a>
+            <a href="#" onClick={() => setMobileMenuOpen(false)}>Beranda</a>
+            <a href="#layanan" onClick={() => setMobileMenuOpen(false)}>Solusi</a>
+            <a href="#proses" onClick={() => setMobileMenuOpen(false)}>Cara Kerja</a>
+            <a href="#tentang" onClick={() => setMobileMenuOpen(false)}>Tentang AdiLabs</a>
+            <a href="#kontak" onClick={() => setMobileMenuOpen(false)} style={{ color: '#e63946', fontWeight: 700 }}>Kontak</a>
           </div>
         )}
       </nav>
@@ -90,9 +94,9 @@ export default function ProfileHeroSection() {
           <div className="hero-column hero-col-left">
             <div className="hero-heading-block hero-heading-left">
               <span className="hero-intro-prefix">I am</span>
-              <h1 className="hero-huge-title">
+              <h2 className="hero-huge-title">
                 <span className="title-row title-highlight">ADI SUMARDI</span>
-              </h1>
+              </h2>
             </div>
 
             <div className="hero-stats-capsule">

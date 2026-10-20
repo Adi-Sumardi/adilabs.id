@@ -12,11 +12,14 @@ import AdsPanel from './pages/AdsPanel';
 import MarqueePanel from './pages/MarqueePanel';
 import HeroTextPanel from './pages/HeroTextPanel';
 import ChangePasswordPanel from './pages/ChangePasswordPanel';
+import NotFound from './pages/NotFound';
+import RouteMeta from './components/RouteMeta';
 
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <RouteMeta />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/produk/:id" element={<ProductDetail />} />
@@ -37,6 +40,7 @@ export default function App() {
             <Route path="teks-hero" element={<HeroTextPanel />} />
             <Route path="ganti-password" element={<ChangePasswordPanel />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

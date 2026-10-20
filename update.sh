@@ -30,7 +30,7 @@ fi
 
 echo "== Verifying built assets referenced by index.html exist =="
 missing=0
-for rel in $(grep -oE 'src="\./[^"]+"|href="\./[^"]+"' "$INDEX" | grep -oE '(app-assets|assets)/[^"]+|favicon\.png'); do
+for rel in $(grep -oE 'src="\.?/[^"]+"|href="\.?/[^"]+"' "$INDEX" | grep -oE '(app-assets|assets)/[^"]+|favicon\.png'); do
   if [ ! -e "$rel" ]; then
     echo "MISSING: $rel (referenced by index.html but not on disk / symlink broken)" >&2
     missing=1
