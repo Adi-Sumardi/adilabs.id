@@ -1137,6 +1137,12 @@ fieldset.fl{border:0;margin:0;padding:0}
   .capline,.copy .htitle,.copy .eyebrow,.copy .sub{display:none!important}
   .notif{left:auto!important;right:clamp(16px,4vw,52px)}
 }
+
+/* Layar lebar: seluruh ilustrasi diperkecil & dirapatkan ke kanan supaya tidak tertimpa teks pembuka.
+   Pakai properti \`scale\` (bukan transform) supaya tidak bentrok dengan transform yang diatur JS saat scroll. */
+@media (min-width:1100px){
+  .viz{transform-origin:100% 50%!important;scale:var(--vz,.78)}
+}
 `,tr=`<div class="sprog" id="sprog"></div><canvas id="pconf"></canvas>
 <div class="wrap">
 <div class="hxw">
