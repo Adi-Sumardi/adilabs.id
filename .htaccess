@@ -59,3 +59,10 @@ ErrorDocument 404 /index.html
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
 </IfModule>
+
+# HTML selalu dicek ulang ke server supaya pengunjung langsung mendapat bundle JS terbaru
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

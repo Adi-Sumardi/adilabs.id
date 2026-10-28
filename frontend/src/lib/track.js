@@ -30,9 +30,39 @@ function gaIds() {
   return { cid, sid, sct };
 }
 
+// Salin parameter dasar dari permintaan gtag yang sebenarnya (endpoint, gtm, consent, dsb.),
+// supaya hit kita identik dengan hit gtag dan pasti diterima GA4.
+let gtagBase = null;
+const PER_EVENT = new Set(['en', '_s', '_fv', '_nsi', '_ss', '_ee', 'tfd', '_et', '_c', 'epn', 'dr', 'ir']);
+function remember(url) {
+  try {
+    const u = new URL(url, location.href);
+    // hanya hit Analytics sungguhan (bukan ping iklan doubleclick) yang punya sesi
+    if (!/(^|\.)(google-analytics\.com|analytics\.google\.com)$/.test(u.hostname)) return;
+    if (!/\/g\/collect$/.test(u.pathname) || u.searchParams.get('tid') !== GA_ID || !u.searchParams.get('sid')) return;
+    const base = new URLSearchParams();
+    for (const [k, v] of u.searchParams) if (!PER_EVENT.has(k) && !k.startsWith('ep.') && !k.startsWith('epn.') && !k.startsWith('up.')) base.set(k, v);
+    gtagBase = { origin: u.origin + u.pathname, params: base };
+  } catch { /* abaikan */ }
+}
+if (typeof window !== 'undefined') {
+  const f = window.fetch;
+  if (f) window.fetch = function (input, init) { remember(typeof input === 'string' ? input : input && input.url); return f.apply(this, arguments); };
+  const sb = navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
+  if (sb) navigator.sendBeacon = function (url, data) { remember(url); return sb(url, data); };
+}
+
 function sendNow(name, params) {
+  if (!navigator.sendBeacon) return false;
+  if (gtagBase) {
+    const q = new URLSearchParams(gtagBase.params);
+    q.set('en', name); q.set('_et', '1');
+    q.set('dl', location.href); q.set('dt', document.title);
+    for (const [k, v] of Object.entries(params)) q.set(`ep.${k}`, v);
+    return navigator.sendBeacon(`${gtagBase.origin}?${q}`);
+  }
   const { cid, sid, sct } = gaIds();
-  if (!cid || !navigator.sendBeacon) return false;
+  if (!cid) return false;
   const q = new URLSearchParams({
     v: '2', tid: GA_ID, cid, en: name, seg: '1',
     dl: location.href, dt: document.title, ul: (navigator.language || '').toLowerCase(),
@@ -41,7 +71,7 @@ function sendNow(name, params) {
   if (sid) q.set('sid', sid);
   if (sct) q.set('sct', sct);
   for (const [k, v] of Object.entries(params)) q.set(`ep.${k}`, v);
-  return navigator.sendBeacon(`https://region1.google-analytics.com/g/collect?${q}`);
+  return navigator.sendBeacon(`https://analytics.google.com/g/collect?${q}`);
 }
 
 export function initClickTracking() {
