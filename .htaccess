@@ -33,6 +33,7 @@ DirectorySlash Off
   # Halaman dengan HTML + metadata sendiri (dibuat scripts/prerender-meta.mjs saat build)
   RewriteRule ^solusi/(tagihan-spp|approval-anggaran)/?$ solusi/$1.html [L]
   RewriteRule ^kebijakan-privasi/?$ kebijakan-privasi.html [L]
+  RewriteRule ^sianggar/?$ sianggar.html [L]
   RewriteRule ^(login|dashboard(/.*)?|produk/[^/]+|blog/[^/]+)/?$ index.html [L]
 </IfModule>
 

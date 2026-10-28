@@ -43,6 +43,7 @@ export default function ProfileHeroSection() {
               <div className="nav-menu" role="menu">
                 <a role="menuitem" href="/solusi/tagihan-spp" data-track="solution_click" data-loc="nav"><b>Sekolah &amp; Yayasan</b><span>Tagihan SPP &amp; pengingat WhatsApp</span></a>
                 <a role="menuitem" href="/solusi/approval-anggaran" data-track="solution_click" data-loc="nav"><b>Kantor &amp; Finance</b><span>Pengajuan &amp; persetujuan anggaran</span></a>
+                <a role="menuitem" href="/sianggar" data-track="solution_click" data-loc="nav"><b>SIANGGAR</b><span>Aplikasi anggaran, RAPBS &amp; LPJ yayasan</span></a>
                 <a role="menuitem" href="#layanan"><b>Pengembangan Custom</b><span>Aplikasi sesuai alur kerja Anda</span></a>
               </div>
             </li>
@@ -73,6 +74,7 @@ export default function ProfileHeroSection() {
             <span className="mobile-menu-label">Solusi</span>
             <a className="mobile-sub" href="/solusi/tagihan-spp" data-track="solution_click" data-loc="nav-mobile">Sekolah &amp; Yayasan · SPP</a>
             <a className="mobile-sub" href="/solusi/approval-anggaran" data-track="solution_click" data-loc="nav-mobile">Kantor &amp; Finance · Approval</a>
+            <a className="mobile-sub" href="/sianggar" data-track="solution_click" data-loc="nav-mobile">SIANGGAR · Anggaran yayasan</a>
             <a className="mobile-sub" href="#layanan" onClick={() => setMobileMenuOpen(false)}>Pengembangan Custom</a>
             <a href="#proses" onClick={() => setMobileMenuOpen(false)}>Cara Kerja</a>
             <a href="#tentang" onClick={() => setMobileMenuOpen(false)}>Tentang AdiLabs</a>

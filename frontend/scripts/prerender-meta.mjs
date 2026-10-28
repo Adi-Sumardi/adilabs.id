@@ -12,7 +12,7 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g
 
 const pages = [
   ...Object.values(SOLUTIONS).map((s) => ({
-    file: `solusi/${s.slug}.html`, path: `/solusi/${s.slug}`, title: s.title, desc: s.desc,
+    file: s.path ? `${s.path.slice(1)}.html` : `solusi/${s.slug}.html`, path: s.path || `/solusi/${s.slug}`, title: s.title, desc: s.desc,
     body: `<h1>${esc(s.h1)}</h1><p>${esc(s.lead)}</p>`,
   })),
   {

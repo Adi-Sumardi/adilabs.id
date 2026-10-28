@@ -7,8 +7,9 @@ import '../../styles/sections.css';
 
 const STEPS = ['Diskusi kebutuhan', 'Rancangan alur & cakupan', 'Penawaran tertulis (biaya & jadwal)', 'Pengembangan & uji coba', 'Pelatihan & mulai dipakai'];
 
-export default function SolutionPage() {
-  const { slug } = useParams();
+export default function SolutionPage({ slug: fixedSlug }) {
+  const params = useParams();
+  const slug = fixedSlug || params.slug;
   const s = SOLUTIONS[slug];
   usePageMeta(s ? s.title : 'Halaman tidak ditemukan – AdiLabs', s ? s.desc : '');
   if (!s) return <NotFound />;
@@ -24,7 +25,9 @@ export default function SolutionPage() {
           <a className="sol-btn" href={s.wa} target="_blank" rel="noreferrer" data-track="whatsapp_click" data-loc={`solusi-${s.slug}`}>Diskusikan Kebutuhan</a>
           <a className="sol-btn sol-btn-ghost" href={`/#${s.demoId}`} data-track="demo_click" data-loc={`solusi-${s.slug}`} data-kind="ilustrasi">Lihat contoh tampilan</a>
         </div>
-        <p className="sol-status">Status: <b>dikembangkan dan dikonfigurasi sesuai kebutuhan</b> organisasi Anda. Contoh tampilan memakai data contoh.</p>
+        {s.status
+          ? <p className="sol-status" dangerouslySetInnerHTML={{ __html: s.status }} />
+          : <p className="sol-status">Status: <b>dikembangkan dan dikonfigurasi sesuai kebutuhan</b> organisasi Anda. Contoh tampilan memakai data contoh.</p>}
       </section>
 
       {s.liveDemo && (
@@ -37,6 +40,16 @@ export default function SolutionPage() {
           <div className="sol-demo-cta">
             <a className="sol-btn" href={s.liveDemo.waUrl} target="_blank" rel="noreferrer" data-track="demo_request_click" data-loc={`solusi-${s.slug}`}>Minta akun demo via WhatsApp</a>
             <a className="sol-btn sol-btn-ghost" href={s.liveDemo.url} target="_blank" rel="noopener" data-track="demo_click" data-loc={`solusi-${s.slug}`} data-kind="aplikasi">Buka {s.liveDemo.name} ↗</a>
+            {s.liveDemo.page && <a className="sol-demo-more" href={s.liveDemo.page}>Kenali fitur {s.liveDemo.name} lengkap →</a>}
+          </div>
+        </section>
+      )}
+
+      {s.features && (
+        <section className="sol-sec">
+          <h2>Fitur utama</h2>
+          <div className="sol-grid3">
+            {s.features.map(([t, d]) => <div className="sol-card" key={t}><h3>{t}</h3><p>{d}</p></div>)}
           </div>
         </section>
       )}

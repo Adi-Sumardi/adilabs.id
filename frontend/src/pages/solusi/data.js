@@ -1,4 +1,4 @@
-// Isi halaman solusi. Hanya tulis kemampuan yang memang bisa didemokan/dikerjakan.
+// Isi halaman solusi/produk. Hanya tulis kemampuan yang memang bisa didemokan/dikerjakan.
 export const SOLUTIONS = {
   "tagihan-spp": {
     "slug": "tagihan-spp",
@@ -91,7 +91,12 @@ export const SOLUTIONS = {
   "approval-anggaran": {
     "slug": "approval-anggaran",
     "demoId": "karya-approval",
-    "liveDemo": {"name": "SIANGGAR", "url": "https://sianggar.adilabs.id", "waUrl": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20mencoba%20demo%20SIANGGAR%20%28aplikasi%20pengajuan%20%26%20persetujuan%20anggaran%29%20untuk%20%5Bnama%20instansi%5D.%20Mohon%20dikirimkan%20akun%20demonya."},
+    "liveDemo": {
+      "name": "SIANGGAR",
+      "url": "https://sianggar.adilabs.id",
+      "waUrl": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20mencoba%20demo%20SIANGGAR%20%28aplikasi%20pengajuan%20%26%20persetujuan%20anggaran%29%20untuk%20%5Bnama%20instansi%5D.%20Mohon%20dikirimkan%20akun%20demonya.",
+      "page": "/sianggar"
+    },
     "wa": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20membahas%20pengajuan%20dan%20persetujuan%20anggaran%20untuk%20%5Bnama%20instansi%5D.%20Proses%20yang%20ingin%20kami%20rapikan%3A%20%5Bmasalah%20utama%5D.%20Saat%20ini%20kami%20memakai%20%5Bcara/sistem%20saat%20ini%5D.%20Apakah%20bisa%20dijadwalkan%20diskusi%20kebutuhan%3F",
     "title": "Aplikasi Pengajuan & Persetujuan Anggaran untuk Kantor dan Yayasan | AdiLabs",
     "desc": "Pengajuan anggaran dicek kelengkapannya, disetujui berjenjang, dan setiap tahap dikabarkan lewat WhatsApp & email. Dikembangkan sesuai alur persetujuan organisasi Anda.",
@@ -176,5 +181,127 @@ export const SOLUTIONS = {
       ]
     ],
     "demo": "Budget Flow + Sendago"
+  },
+  "sianggar": {
+    "slug": "sianggar",
+    "path": "/sianggar",
+    "demoId": "karya-approval",
+    "wa": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20tertarik%20dengan%20SIANGGAR%20untuk%20%5Bnama%20yayasan/sekolah%5D.%20Saat%20ini%20pengajuan%20anggaran%20kami%20dilakukan%20dengan%20%5Bcara/sistem%20saat%20ini%5D.%20Apakah%20bisa%20dijadwalkan%20diskusi%20dan%20demo%3F",
+    "title": "SIANGGAR – Aplikasi Anggaran, RAPBS & LPJ Yayasan Pendidikan",
+    "desc": "Pengajuan anggaran per unit, persetujuan berjenjang, RAPBS/APBS, LPJ, serta notifikasi WhatsApp & email dalam satu aplikasi untuk yayasan pendidikan. Coba demonya.",
+    "kick": "Aplikasi · Yayasan pendidikan",
+    "h1": "SIANGGAR: pengajuan anggaran, persetujuan, dan LPJ yayasan dalam satu aplikasi",
+    "lead": "Setiap unit mengajukan dana sesuai RAPBS, pengajuan diperiksa keuangan dan disetujui berjenjang sesuai nominal dan bidang, lalu dipertanggungjawabkan lewat LPJ, dengan notifikasi WhatsApp & email di setiap tahap.",
+    "status": "Status: <b>aplikasi sudah tersedia</b> dan dikonfigurasi sesuai struktur unit, bidang, dan aturan persetujuan yayasan Anda. Demo memakai data demo.",
+    "who": [
+      [
+        "Unit sekolah & bagian",
+        "Menyusun RAPBS, mengajukan dana beserta lampiran, merevisi bila diminta, dan membuat LPJ."
+      ],
+      [
+        "Staf keuangan",
+        "Memeriksa kelengkapan, kesesuaian mata anggaran, serta kewajaran volume dan harga sebelum diteruskan."
+      ],
+      [
+        "Direktur & pimpinan yayasan",
+        "Menyetujui sesuai kewenangan dan nominal, serta memantau pemakaian anggaran per unit."
+      ]
+    ],
+    "problems": [
+      "Pengajuan dana dari banyak unit lewat kertas atau chat sulit dilacak.",
+      "Sulit memastikan pengajuan sesuai RAPBS dan sisa anggaran mata anggarannya.",
+      "Jalur persetujuan yang berbeda per nominal dan bidang sering membingungkan.",
+      "LPJ terlambat dan bukti pengeluaran tercecer."
+    ],
+    "flow": [
+      [
+        "Perencanaan RAPBS/APBS",
+        "Mata anggaran, plafon, dan program prioritas per unit disusun, disahkan, dan bisa dicetak."
+      ],
+      [
+        "Pengajuan dana",
+        "Unit mengisi pengajuan (5W+1H) dengan lampiran; saldo dan persentase pemakaian anggaran terlihat langsung."
+      ],
+      [
+        "Pemeriksaan keuangan",
+        "Checklist kelengkapan dan kesesuaian; pengajuan bisa diminta revisi atau ditolak dengan catatan, dan saldo dikembalikan bila ditolak."
+      ],
+      [
+        "Persetujuan berjenjang",
+        "Pengajuan bergerak ke penyetuju sesuai alur yang diatur Admin (misalnya berdasarkan nominal dan bidang); setiap tahap dikabarkan lewat WhatsApp & email."
+      ],
+      [
+        "Pencairan & LPJ",
+        "Surat permohonan dan voucher pencairan dicetak, jurnal pencairan tercatat, lalu kegiatan dipertanggungjawabkan lewat LPJ."
+      ]
+    ],
+    "features": [
+      [
+        "Alur approval bisa diatur Admin",
+        "Tahap dan penyetuju diatur sendiri oleh Admin sesuai aturan yayasan, tanpa mengubah kode."
+      ],
+      [
+        "Peta Antrian Approval",
+        "Pimpinan dan pengendali melihat di mana setiap pengajuan & LPJ sedang menunggu."
+      ],
+      [
+        "Notifikasi WhatsApp & email",
+        "Pengaju dan penyetuju dikabari di setiap tahap."
+      ],
+      [
+        "Cetak surat & voucher",
+        "Surat Permohonan dengan kop per unit, RAPBS/APBS, dan voucher pencairan."
+      ],
+      [
+        "Perubahan anggaran",
+        "Perubahan anggaran diajukan dan disetujui lewat antrian approval."
+      ],
+      [
+        "Tur fitur & panduan",
+        "Setiap dashboard dilengkapi tur singkat supaya pengguna baru cepat paham."
+      ]
+    ],
+    "outputs": [
+      "Status setiap pengajuan & LPJ per unit",
+      "Jejak persetujuan dan catatan revisi per pengajuan",
+      "Realisasi dan sisa anggaran per mata anggaran",
+      "Dokumen cetak: surat permohonan, RAPBS/APBS, voucher"
+    ],
+    "needs": [
+      "Struktur unit/bagian dan bidang di yayasan.",
+      "Aturan persetujuan: siapa menyetujui apa, dan batas nominalnya.",
+      "Data RAPBS atau mata anggaran yang berjalan.",
+      "Nomor WhatsApp dan email pengirim notifikasi.",
+      "Server/hosting: milik yayasan atau kami bantu siapkan."
+    ],
+    "limits": [
+      "Jalur persetujuan mengikuti aturan yang dikonfigurasi; perubahan aturan perlu diperbarui di sistem.",
+      "Keputusan persetujuan tetap di tangan pejabat yang berwenang.",
+      "Notifikasi WhatsApp bergantung pada nomor penerima yang valid dan layanan pengirim WhatsApp."
+    ],
+    "faq": [
+      [
+        "Berapa biayanya?",
+        "Biaya ditentukan setelah diskusi, berdasarkan jumlah unit, pengguna, penyesuaian alur, dan integrasi, lalu dituangkan dalam penawaran tertulis."
+      ],
+      [
+        "Bisakah disesuaikan dengan struktur yayasan kami?",
+        "Bisa. Unit dan bidang disiapkan sesuai struktur Anda, dan alur persetujuan dapat diatur Admin langsung di aplikasi."
+      ],
+      [
+        "Apakah bisa dicoba dulu?",
+        "Bisa. Minta akun demo lewat WhatsApp, lalu coba langsung di sianggar.adilabs.id dengan data demo."
+      ],
+      [
+        "Apakah bisa dipakai di luar sekolah?",
+        "SIANGGAR dikembangkan untuk yayasan pendidikan dengan banyak unit. Untuk organisasi lain, penyesuaiannya bisa dibahas."
+      ]
+    ],
+    "demo": "SIANGGAR",
+    "liveDemo": {
+      "name": "SIANGGAR",
+      "url": "https://sianggar.adilabs.id",
+      "waUrl": "https://wa.me/6285121379697?text=Halo%20AdiLabs%2C%20saya%20ingin%20mencoba%20demo%20SIANGGAR%20%28aplikasi%20pengajuan%20%26%20persetujuan%20anggaran%29%20untuk%20%5Bnama%20instansi%5D.%20Mohon%20dikirimkan%20akun%20demonya."
+    }
   }
 };

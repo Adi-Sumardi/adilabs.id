@@ -65,3 +65,5 @@
 .sol-demo p{margin:0;color:#6a4a4f;font-size:15.5px;line-height:1.6}
 .sol-demo-cta{display:flex;flex-direction:column;gap:10px}
 @media (max-width:800px){.sol-demo{grid-template-columns:1fr}.sol-demo-cta .sol-btn{width:100%}}
+.sol-demo-more{align-self:center;color:#e3122b;font-weight:700;font-size:14.5px;text-decoration:none}
+.sol-demo-more:hover{text-decoration:underline}

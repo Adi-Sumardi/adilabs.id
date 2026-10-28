@@ -40,6 +40,7 @@ export default function PageShell({ children, waUrl = WA_GENERAL }) {
         <nav aria-label="Navigasi bawah">
           <Link to="/solusi/tagihan-spp">Tagihan SPP</Link>
           <Link to="/solusi/approval-anggaran">Approval anggaran</Link>
+          <Link to="/sianggar">SIANGGAR</Link>
           <Link to="/kebijakan-privasi">Kebijakan Privasi</Link>
         </nav>
         <span>© 2026 AdiLabs</span>

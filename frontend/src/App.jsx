@@ -27,6 +27,7 @@ export default function App() {
           <Route path="/produk/:id" element={<ProductDetail />} />
           <Route path="/blog/:slug" element={<ArticleDetail />} />
           <Route path="/solusi/:slug" element={<SolutionPage />} />
+          <Route path="/sianggar" element={<SolutionPage slug="sianggar" />} />
           <Route path="/kebijakan-privasi" element={<PrivacyPage />} />
           <Route path="/login" element={<Login />} />
           <Route
