@@ -5,6 +5,13 @@ DirectorySlash Off
   RewriteEngine On
   RewriteBase /
 
+  # Satu alamat utama: http:// dan www. dialihkan permanen ke https://adilabs.id
+  # (.well-known dikecualikan supaya perpanjangan sertifikat SSL tetap jalan)
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://adilabs.id/$1 [R=301,L]
+
   # Block git internals, PHP/deploy source, and shell scripts FIRST — before
   # the "file exists" passthrough below, since these do exist on disk and
   # would otherwise be served as plain static files.
